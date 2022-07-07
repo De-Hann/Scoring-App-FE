@@ -1,0 +1,52 @@
+.small-card {
+  ::ng-deep {
+    padding: 5px;
+    cursor: pointer;
+    .p-card {
+      border-radius: 10px;
+      .p-card-body {
+        padding: 0px;
+        overflow: hidden;
+        border-radius: 10px;
+        .p-card-content {
+          border-radius: 10px;
+          position: relative;
+          width: 350px;
+          height: 200px;
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            transition: var(--animation-time);
+            object-fit: cover;
+          }
+          p {
+            text-align: center;
+            margin: 0px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: 0px;
+            width: 200px;
+            height: 40px;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 800;
+            transition: var(--animation-time);
+          }
+
+          &:hover {
+            img {
+              width: 220%;
+              height: 220%;
+            }
+            p {
+              font-size: 26px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

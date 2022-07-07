@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap");
+
+* {
+  --animation-time: 300ms;
+  --box-shadow: 0;
+  --inset-box-shadow: inset 0px 0px 10px 0px rgb(0 0 0 / 32%);
+
+  font-family: "Poppins", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}

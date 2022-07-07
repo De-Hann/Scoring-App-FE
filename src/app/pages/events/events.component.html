@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="header">
+    <h1>Scoring App</h1>
+    <div class="controls">
+      <button
+        pButton
+        class="btn btn-primary"
+        type="button"
+        label="Add Event"
+        icon="pi pi-plus"
+      ></button>
+    </div>
+  </div>
+  <p>Please select an event below</p>
+  <p-tabView class="events-tabview">
+    <p-tabPanel header="Upcoming Events">
+      <app-spinner *ngIf="loading"></app-spinner>
+      <div class="upcoming-events" *ngIf="!loading">
+        <app-small-card
+          *ngFor="let event of events"
+          class="event-card"
+          (click)="navigateToEvent(event.id)"
+          [label]="event.name"
+          [imgUrl]="event.imgUrl"
+        ></app-small-card>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Old Events"> Content 2 </p-tabPanel>
+  </p-tabView>
+</div>

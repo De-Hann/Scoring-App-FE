@@ -1,0 +1,19 @@
+::ng-deep {
+  body {
+    margin: 0;
+    padding: 0;
+    #content {
+      #main-content {
+        margin: 10px;
+        .btn {
+          .btn-primary {
+          }
+          .btn-secondary {
+          }
+          .btn-tertiary {
+          }
+        }
+      }
+    }
+  }
+}

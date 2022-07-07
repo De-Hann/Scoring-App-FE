@@ -1,0 +1,21 @@
+.container {
+  ::ng-deep {
+    .controls {
+      margin: 10px 0px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .activities {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: flex-start;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="container">
+  <app-navigation label="{{ currentEvent?.name }}"></app-navigation>
+  <app-banner imgUrl="{{ currentEvent?.imgUrl }}"></app-banner>
+
+  <div class="controls">
+    <button
+      pButton
+      class="btn btn-primary"
+      type="button"
+      label="Edit Event"
+      icon="pi pi-plus"
+    ></button>
+  </div>
+  <p>Please select an activity below</p>
+
+  <!-- TODO: CONTINUE HERE, Wrap component with extra details about activity -->
+  <div class="activities">
+    <div class="activity-section">
+      <app-small-card
+        [label]="'Activity'"
+        [imgUrl]="
+          'https://media.distractify.com/brand-img/IPJP2rGdp/0x0/walterthedog-1592229773475.jpg'
+        "
+        class=""
+      ></app-small-card>
+    </div>
+  </div>
+</div>
