@@ -13,16 +13,19 @@
   </div>
   <p>Please select an activity below</p>
 
-  <!-- TODO: CONTINUE HERE, Wrap component with extra details about activity -->
-  <div class="activities">
-    <div class="activity-section">
+  <div class="activities" *ngIf="!loading">
+    <div
+      class="activity-section"
+      *ngFor="let activity of activities; let i = index"
+    >
       <app-small-card
-        [label]="'Activity'"
-        [imgUrl]="
-          'https://media.distractify.com/brand-img/IPJP2rGdp/0x0/walterthedog-1592229773475.jpg'
-        "
-        class=""
+        [label]="activity.name"
+        [imgUrl]="activity.imgUrl"
+        class="activity-card"
       ></app-small-card>
+      <div class="activity-details">
+        <p>Teams: {{ teamData[i].teams.length }}</p>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "eventId": "1",
+    "name": "Brewing",
+    "imgUrl": "https://cdn.britannica.com/96/90096-050-514D5088/Glasses-beer-bar-Brussels.jpg"
+  },
+  {
+    "id": "2",
+    "eventId": "1",
+    "name": "Potjie",
+    "imgUrl": "https://cdn.britannica.com/96/90096-050-514D5088/Glasses-beer-bar-Brussels.jpg"
+  },
+  {
+    "id": "3",
+    "eventId": "2",
+    "name": "Brewing",
+    "imgUrl": "https://cdn.britannica.com/96/90096-050-514D5088/Glasses-beer-bar-Brussels.jpg"
+  }
+]

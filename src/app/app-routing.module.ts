@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: UrlConstants.home, component: EventsComponent },
   { path: UrlConstants.viewEvent + '/:id', component: ViewEventComponent },
+  { path: '**', redirectTo: UrlConstants.home },
 ];
 
 @NgModule({

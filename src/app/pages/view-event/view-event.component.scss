@@ -16,6 +16,20 @@
       align-content: flex-start;
       justify-content: flex-start;
       align-items: flex-start;
+      .activity-section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        .activity-card {
+        }
+        .activity-details {
+          margin-left: 20px;
+        }
+      }
     }
   }
 }
