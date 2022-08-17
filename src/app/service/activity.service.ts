@@ -23,4 +23,16 @@ export class ActivityService {
         return data;
       });
   }
+
+  public getActivityById(id: string): Promise<Activity | undefined> {
+    return this.http
+      .get<Activity[]>('./../../assets/temp/activity.json')
+      .toPromise()
+      .then((res) => {
+        return res.find((e) => e.id === id);
+      })
+      .then((data) => {
+        return data;
+      });
+  }
 }

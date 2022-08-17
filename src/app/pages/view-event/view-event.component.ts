@@ -51,4 +51,9 @@ export class ViewEventComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  navigateToActivity(id: string) {
+    console.log(id);
+    this.router.navigate([UrlConstants.viewActivity + '/' + id]);
+  }
 }

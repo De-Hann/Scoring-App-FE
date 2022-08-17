@@ -1,1 +1,17 @@
-<p>teams works!</p>
+<div class="container" *ngIf="!loading">
+  <app-navigation label="{{ currentActivity?.name }}"></app-navigation>
+  <app-banner imgUrl="{{ currentActivity?.imgUrl }}"></app-banner>
+
+  <p>Please select an activity below</p>
+
+  <div class="activities" *ngIf="!loading">
+    <div class="activity-section" *ngFor="let team of teams; let i = index">
+      <app-small-card
+        [label]="team.name"
+        [imgUrl]="team.imgUrl"
+        class="activity-card"
+        (click)="navigateToTeam(team.id)"
+      ></app-small-card>
+    </div>
+  </div>
+</div>
