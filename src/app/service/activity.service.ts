@@ -1,38 +1,30 @@
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Activity } from '../models/activity';
-
+import { take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class ActivityService {
+  private url: string = environment.api + 'Activity/';
+
   constructor(private http: HttpClient) {}
 
-  getActivities(eventId: string): Promise<Activity[]> {
+  getActivities(eventId: string): Observable<Activity[]> {
     return this.http
-      .get<Activity[]>('./../../assets/temp/activity.json')
-      .toPromise()
-      .then((res) => {
-        const activities: Activity[] = [];
-        res.forEach((x) => {
-          if (x.eventId === eventId) activities.push(x);
-        });
-        return activities;
+      .get<Activity[]>(this.url + 'GetByEventId', {
+        params: new HttpParams().set('eventId', eventId),
       })
-      .then((data) => {
-        return data;
-      });
+      .pipe(take(1));
   }
 
-  public getActivityById(id: string): Promise<Activity | undefined> {
+  public getActivityById(id: string): Observable<Activity> {
     return this.http
-      .get<Activity[]>('./../../assets/temp/activity.json')
-      .toPromise()
-      .then((res) => {
-        return res.find((e) => e.id === id);
+      .get<Activity>(this.url + 'getActivityById', {
+        params: new HttpParams().set('id', id),
       })
-      .then((data) => {
-        return data;
-      });
+      .pipe(take(1));
   }
 }

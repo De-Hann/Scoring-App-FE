@@ -29,31 +29,34 @@ export class ViewEventComponent implements OnInit {
   ) {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.eventService.getEventById(id ? id : '').then((event) => {
-      if (event) {
-        this.currentEvent = event;
-        this.activityService.getActivities(event.id).then((activities) => {
-          this.activities = activities;
+    this.eventService.getEventById(id ? id : '').subscribe({
+      next: (event) => {
+        if (event) {
+          this.currentEvent = event;
+          this.activityService
+            .getActivities(event.id)
+            .subscribe((activities) => {
+              this.activities = activities;
 
-          const ids: string[] = [];
-          activities.forEach((activity) => {
-            ids.push(activity.id);
-          });
+              const ids: string[] = [];
+              activities.forEach((activity) => {
+                ids.push(activity.id);
+              });
 
-          this.teamService.getTeamsByActivities(ids).then((res) => {
-            this.teamData = res;
+              this.teamService.getTeamsByActivities(ids).subscribe((res) => {
+                this.teamData = res;
 
-            this.loading = false;
-          });
-        });
-      } else this.router.navigate([UrlConstants.home]);
+                this.loading = false;
+              });
+            });
+        } else this.router.navigate([UrlConstants.home]);
+      },
     });
   }
 
   ngOnInit(): void {}
 
   navigateToActivity(id: string) {
-    console.log(id);
     this.router.navigate([UrlConstants.viewActivity + '/' + id]);
   }
 }

@@ -15,9 +15,11 @@ export class EventsComponent implements OnInit {
   events: Event[] = [];
 
   constructor(private eventService: EventService, private router: Router) {
-    this.eventService.getEvents().then((data) => {
-      this.events = data;
-      this.loading = false;
+    this.eventService.getEvents().subscribe({
+      next: (data) => {
+        this.events = data;
+        this.loading = false;
+      },
     });
   }
 

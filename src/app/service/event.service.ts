@@ -1,32 +1,24 @@
-import { HttpClient } from '@angular/common/http';
+import { take } from 'rxjs/operators';
+import { environment } from './../../environments/environment';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Event } from '../models/event';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class EventService {
+  private url: string = environment.api + 'Event/';
   constructor(private http: HttpClient) {}
 
-  public getEvents(): Promise<Event[]> {
-    return this.http
-      .get<Event[]>('./../../assets/temp/event-large.json')
-      .toPromise()
-      .then((res) => {
-        return res;
-      })
-      .then((data) => {
-        return data;
-      });
+  public getEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(this.url + 'GetAll').pipe(take(1));
   }
 
-  public getEventById(id: string): Promise<Event | undefined> {
+  public getEventById(id: string): Observable<Event | undefined> {
     return this.http
-      .get<Event[]>('./../../assets/temp/event-large.json')
-      .toPromise()
-      .then((res) => {
-        return res.find((e) => e.id === id);
+      .get<Event>(this.url + 'GetById', {
+        params: new HttpParams().set('id', id),
       })
-      .then((data) => {
-        return data;
-      });
+      .pipe(take(1));
   }
 }

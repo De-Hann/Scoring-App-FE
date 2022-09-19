@@ -7,9 +7,12 @@ import { ButtonModule } from 'primeng/button';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { MenuItem } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   exports: [
+    BrowserAnimationsModule,
     ProgressSpinnerModule,
     TabViewModule,
     TableModule,
@@ -17,6 +20,7 @@ import { DividerModule } from 'primeng/divider';
     ButtonModule,
     BreadcrumbModule,
     DividerModule,
+    ToastModule,
   ],
 })
 export class PrimeModule {}

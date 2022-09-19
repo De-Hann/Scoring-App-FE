@@ -29,28 +29,30 @@ export class TeamsComponent implements OnInit {
   ) {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.activityService.getActivityById(id ? id : '').then((activity) => {
+    this.activityService.getActivityById(id ? id : '').subscribe((activity) => {
       if (activity) {
         this.currentActivity = activity;
 
-        this.eventService.getEventById(activity.eventId).then((event) => {
-          if (event) {
-            this.currentEvent = event;
+        this.eventService.getEventById(activity.eventId).subscribe({
+          next: (event) => {
+            if (event) {
+              this.currentEvent = event;
 
-            this.teamService
-              .getTeamsByActivities([activity.id])
-              .then((teamData) => {
-                if (teamData) {
-                  this.teams = teamData[0].teams;
+              this.teamService
+                .getTeamsByActivities([activity.id])
+                .subscribe((teamData) => {
+                  if (teamData) {
+                    this.teams = teamData[0].teams;
 
-                  console.log(this.currentActivity);
-                  console.log(this.currentEvent);
-                  console.log(this.teams);
+                    console.log(this.currentActivity);
+                    console.log(this.currentEvent);
+                    console.log(this.teams);
 
-                  this.loading = false;
-                }
-              });
-          }
+                    this.loading = false;
+                  }
+                });
+            }
+          },
         });
       } else {
         this.router.navigate([UrlConstants.home]);

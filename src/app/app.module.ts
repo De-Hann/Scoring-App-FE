@@ -1,3 +1,5 @@
+import { MessageService } from 'primeng/api';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,12 +18,32 @@ import { NavigationComponent } from './components/shared/navigation/navigation.c
 import { BannerComponent } from './components/shared/banner/banner.component';
 import { TeamCardComponent } from './components/team/team-card/team-card.component';
 import { SmallCardComponent } from './components/shared/small-card/small-card.component';
-
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { LoginComponent } from './pages/login/login.component';
+import { LogoutComponent } from './pages/logout/logout.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { httpInterceptorProviders } from './providers/interceptor.providers';
+import { metaReducers, reducers } from './store';
+import { ToastService } from './service/toast.service';
 @NgModule({
-  declarations: [AppComponent, EventsComponent, SpinnerComponent, TeamsComponent, ViewEventComponent, NavigationComponent, BannerComponent, TeamCardComponent, SmallCardComponent],
+  declarations: [
+    AppComponent,
+    EventsComponent,
+    SpinnerComponent,
+    TeamsComponent,
+    ViewEventComponent,
+    NavigationComponent,
+    BannerComponent,
+    TeamCardComponent,
+    SmallCardComponent,
+    LoginComponent,
+    LogoutComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -30,8 +52,17 @@ import { SmallCardComponent } from './components/shared/small-card/small-card.co
       registrationStrategy: 'registerWhenStable:30000',
     }),
     PrimeModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
-  providers: [],
+  providers: [httpInterceptorProviders, ToastService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
