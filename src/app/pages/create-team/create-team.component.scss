@@ -1,0 +1,39 @@
+.container.create-team {
+  height: calc(100vh - 100px);
+
+  form.create-team-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+
+      padding: 10px;
+
+      .group {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+
+        label {
+          margin: 0px 10px;
+        }
+      }
+    }
+  }
+}

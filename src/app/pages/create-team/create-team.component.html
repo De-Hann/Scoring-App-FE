@@ -1,0 +1,53 @@
+<div class="container create-team">
+  <app-navigation
+    [backUrl]="backUrl"
+    *ngIf="!editing"
+    label="Create Team"
+  ></app-navigation>
+  <app-navigation
+    [backUrl]="backUrl"
+    *ngIf="editing"
+    label="Edit Team"
+  ></app-navigation>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <form class="create-team-form" [formGroup]="createTeamForm" *ngIf="!loading">
+    <div class="inputs">
+      <div class="row">
+        <div class="group">
+          <label for="teamName">Team Name: </label>
+          <input
+            type="text"
+            pInputText
+            inputId="teamName"
+            formControlName="name"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="row bottom">
+        <button
+          *ngIf="editing"
+          [disabled]="createTeamForm.invalid"
+          pButton
+          class="btn btn-primary"
+          type="button"
+          label="Edit team"
+          (click)="Submit()"
+        ></button>
+        <button
+          *ngIf="!editing"
+          [disabled]="createTeamForm.invalid"
+          pButton
+          class="btn btn-primary"
+          type="button"
+          label="Create Team"
+          (click)="Submit()"
+        ></button>
+      </div>
+    </div>
+  </form>
+</div>

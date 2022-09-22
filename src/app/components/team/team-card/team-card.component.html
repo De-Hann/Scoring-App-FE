@@ -1,1 +1,24 @@
-<p-card> Content </p-card>
+<div class="teams-card">
+  <div class="details">
+    <p-card class="card" [class.default]="imgUrl === ''">
+      <div>
+        <img *ngIf="imgUrl !== ''" src="{{ imgUrl }}" alt="" />
+        <p class="name">{{ label }}</p>
+        <p class="score" *ngIf="maxScore > 0">
+          {{ totalScore + " / " + maxScore }}
+        </p>
+      </div>
+      <i class="pi pi-pencil" *ngIf="editable" (click)="clickEdit()"></i>
+      ></p-card
+    >
+  </div>
+  <div class="score">
+    <h5 class="header">Your Score: {{ myScore }} / 10</h5>
+    <p-slider
+      [(ngModel)]="myScore"
+      (onChange)="clickScore()"
+      [min]="0"
+      [max]="10"
+    ></p-slider>
+  </div>
+</div>

@@ -22,10 +22,14 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './providers/interceptor.providers';
 import { metaReducers, reducers } from './store';
 import { ToastService } from './service/toast.service';
+import { CreateEventComponent } from './pages/create-event/create-event.component';
+import { CreateActivityComponent } from './pages/create-activity/create-activity.component';
+import { CreateTeamComponent } from './pages/create-team/create-team.component';
+import { UpdateFooterComponent } from './components/team/update-footer/update-footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,10 +43,15 @@ import { ToastService } from './service/toast.service';
     SmallCardComponent,
     LoginComponent,
     LogoutComponent,
+    CreateEventComponent,
+    CreateActivityComponent,
+    CreateTeamComponent,
+    UpdateFooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

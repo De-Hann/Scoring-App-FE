@@ -1,0 +1,20 @@
+.update-footer {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  h4 {
+    margin: 0;
+  }
+
+  .controls {
+    .reset {
+      margin-right: 5px;
+    }
+  }
+}

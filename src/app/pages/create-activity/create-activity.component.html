@@ -1,0 +1,57 @@
+<div class="container create-activity">
+  <app-navigation
+    [backUrl]="backUrl"
+    *ngIf="!editing"
+    label="Create Activity"
+  ></app-navigation>
+  <app-navigation
+    [backUrl]="backUrl"
+    *ngIf="editing"
+    label="Edit Activity"
+  ></app-navigation>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <form
+    class="create-activity-form"
+    [formGroup]="createActivityForm"
+    *ngIf="!loading"
+  >
+    <div class="inputs">
+      <div class="row">
+        <div class="group">
+          <label for="activityName">Activity Name: </label>
+          <input
+            type="text"
+            pInputText
+            inputId="activityName"
+            formControlName="name"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="row bottom">
+        <button
+          *ngIf="editing"
+          [disabled]="createActivityForm.invalid"
+          pButton
+          class="btn btn-primary"
+          type="button"
+          label="Edit Activity"
+          (click)="Submit()"
+        ></button>
+        <button
+          *ngIf="!editing"
+          [disabled]="createActivityForm.invalid"
+          pButton
+          class="btn btn-primary"
+          type="button"
+          label="Create Activity"
+          (click)="Submit()"
+        ></button>
+      </div>
+    </div>
+  </form>
+</div>

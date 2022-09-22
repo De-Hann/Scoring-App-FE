@@ -2,7 +2,7 @@ import { take } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Event } from '../models/event';
+import { CreateEvent, Event } from '../models/event';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -20,5 +20,11 @@ export class EventService {
         params: new HttpParams().set('id', id),
       })
       .pipe(take(1));
+  }
+
+  public createEvent(model: CreateEvent): Observable<Event | undefined> {
+    return this.http.post<Event>(this.url + 'Create', {
+      ...model,
+    });
   }
 }

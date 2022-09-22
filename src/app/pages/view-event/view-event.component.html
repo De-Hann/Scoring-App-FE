@@ -1,33 +1,50 @@
 <div class="container" *ngIf="!loading">
-  <app-navigation label="{{ currentEvent?.name }}"></app-navigation>
-  <app-banner imgUrl="{{ currentEvent?.imgUrl }}"></app-banner>
+  <app-navigation
+    label="{{ currentEvent?.name }}"
+    [backUrl]="backUrl"
+  ></app-navigation>
+  <app-banner
+    *ngIf="currentEvent?.imgUrl !== ''"
+    imgUrl="{{ currentEvent?.imgUrl }}"
+  ></app-banner>
 
   <div class="controls">
     <button
       pButton
       class="btn btn-primary"
       type="button"
-      label="Edit Event"
+      label="Add Activity"
       icon="pi pi-plus"
+      (click)="navigateToCreate()"
     ></button>
   </div>
-  <p>Please select an activity below</p>
+  <div *ngIf="this.activities.length > 0">
+    <p>Please select an activity below</p>
 
-  <div class="activities" *ngIf="!loading">
-    <div
-      class="activity-section"
-      *ngFor="let activity of activities; let i = index"
-    >
-      <app-small-card
-        [label]="activity.name"
-        [imgUrl]="activity.imgUrl"
-        class="activity-card"
-        (click)="navigateToActivity(activity.id)"
-      ></app-small-card>
-      <div class="activity-details">
-        <p>Teams: {{ teamData[i].teams.length }}</p>
+    <div class="activities" *ngIf="!loading">
+      <div
+        class="activity-section"
+        *ngFor="let activity of activities; let i = index"
+      >
+        <app-small-card
+          [label]="activity.name"
+          [imgUrl]="activity.imgUrl"
+          class="activity-card"
+          [editable]="true"
+          (view)="navigateToActivity(activity.id)"
+          (edit)="editActivity(activity.id)"
+        ></app-small-card>
+        <div
+          class="activity-details"
+          *ngIf="teamData.length > 0 && teamData[i]"
+        >
+          <p>Teams: {{ teamData[i].teams.length }}</p>
+        </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="this.activities.length <= 0">
+    <p>No Activities found</p>
   </div>
 </div>
 <div class="container" *ngIf="loading">

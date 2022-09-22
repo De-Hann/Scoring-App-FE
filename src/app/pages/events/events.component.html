@@ -8,6 +8,7 @@
         type="button"
         label="Add Event"
         icon="pi pi-plus"
+        (click)="navigateToCreateEvent()"
       ></button>
     </div>
   </div>
@@ -19,9 +20,12 @@
         <app-small-card
           *ngFor="let event of events"
           class="event-card"
-          (click)="navigateToEvent(event.id)"
+          (view)="navigateToEvent(event.id)"
+          (edit)="editEvent(event.id)"
+          [id]="event.id"
           [label]="event.name"
           [imgUrl]="event.imgUrl"
+          [editable]="true"
         ></app-small-card>
       </div>
     </p-tabPanel>

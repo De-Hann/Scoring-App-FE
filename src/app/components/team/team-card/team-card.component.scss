@@ -1,0 +1,97 @@
+.teams-card {
+  padding: 5px;
+  margin-bottom: 20px;
+  ::ng-deep {
+    .details {
+      .card {
+        cursor: pointer;
+        .p-card {
+          border-radius: 10px;
+          .p-card-body {
+            padding: 0px;
+            overflow: hidden;
+            border-radius: 10px;
+
+            .p-card-content {
+              border-radius: 10px;
+              position: relative;
+              width: 350px;
+              height: 200px;
+              div {
+                width: 100%;
+                height: 100%;
+                img {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 200%;
+                  height: 200%;
+                  transition: var(--animation-time);
+                  object-fit: cover;
+                }
+                p {
+                  text-align: center;
+                  font-size: 24px;
+                  font-weight: 800;
+                  transition: var(--animation-time);
+                  color: #fff;
+                  &.name {
+                    margin: 0px;
+                    position: absolute;
+                    top: calc(50% - 20px);
+                    left: 0px;
+                    width: 200px;
+                    height: 40px;
+                  }
+                  &.score {
+                    position: absolute;
+                    bottom: 10px;
+                    right: 0px;
+                  }
+                }
+              }
+              .pi.pi-pencil {
+                color: #fff;
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+              }
+
+              &:hover {
+                img {
+                  width: 220%;
+                  height: 220%;
+                }
+                p {
+                  font-size: 26px;
+                }
+              }
+            }
+          }
+        }
+        &.default {
+          .p-card {
+            .p-card-body {
+              background-color: rgb(0, 0, 0);
+            }
+          }
+        }
+      }
+    }
+    .score {
+      padding: 0px 20px;
+      .header {
+        margin: 5px 0px;
+      }
+    }
+  }
+}

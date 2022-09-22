@@ -1,0 +1,45 @@
+.container {
+  &.edited {
+    margin-bottom: 100px;
+  }
+  ::ng-deep {
+    .controls {
+      margin: 10px 0px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .teams {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: flex-start;
+      justify-content: flex-start;
+      align-items: flex-start;
+      .team-section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        .team-card {
+        }
+        .team-details {
+          margin-left: 20px;
+        }
+      }
+    }
+    .update {
+      background-color: #fff;
+      z-index: 10;
+      position: fixed;
+      bottom: 0px;
+      left: 0px;
+    }
+  }
+}

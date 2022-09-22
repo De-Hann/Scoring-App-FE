@@ -28,4 +28,12 @@ export class EventsComponent implements OnInit {
   navigateToEvent(eventId: string) {
     this.router.navigate([UrlConstants.viewEvent + '/' + eventId]);
   }
+
+  editEvent(eventId: string) {
+    this.router.navigate([UrlConstants.editEvent + '/' + eventId]);
+  }
+
+  navigateToCreateEvent() {
+    this.router.navigate([UrlConstants.createEvent]);
+  }
 }

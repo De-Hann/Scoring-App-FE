@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Activity } from '../models/activity';
+import { Activity, CreateActivity } from '../models/activity';
 import { take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
@@ -26,5 +26,11 @@ export class ActivityService {
         params: new HttpParams().set('id', id),
       })
       .pipe(take(1));
+  }
+
+  public createActivity(model: CreateActivity): Observable<Activity> {
+    return this.http.post<Activity>(this.url + 'Create', {
+      ...model,
+    });
   }
 }

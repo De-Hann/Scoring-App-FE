@@ -5,3 +5,9 @@ export interface Score {
   judgeId: string;
   total: string;
 }
+
+export interface UpdateScoreRequest {
+  userId: string;
+  teamId: string;
+  score: number;
+}

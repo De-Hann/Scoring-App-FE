@@ -4,3 +4,9 @@ export interface Activity {
   name: string;
   imgUrl: string;
 }
+
+export interface CreateActivity {
+  name: string;
+  eventId: string;
+  imgUrl: string;
+}

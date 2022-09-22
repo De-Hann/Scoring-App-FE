@@ -1,17 +1,51 @@
-<div class="container" *ngIf="!loading">
-  <app-navigation label="{{ currentActivity?.name }}"></app-navigation>
-  <app-banner imgUrl="{{ currentActivity?.imgUrl }}"></app-banner>
+<div class="container" [class.edited]="newScores.length > 0" *ngIf="!loading">
+  <app-navigation
+    label="{{ currentActivity?.name }}"
+    [backUrl]="backUrl"
+  ></app-navigation>
+  <app-banner
+    *ngIf="currentActivity?.imgUrl !== ''"
+    imgUrl="{{ currentActivity?.imgUrl }}"
+  ></app-banner>
 
-  <p>Please select an activity below</p>
+  <div class="controls">
+    <button
+      pButton
+      class="btn btn-primary"
+      type="button"
+      label="Add Team"
+      icon="pi pi-plus"
+      (click)="navigateToCreate()"
+    ></button>
+  </div>
 
-  <div class="activities" *ngIf="!loading">
-    <div class="activity-section" *ngFor="let team of teams; let i = index">
-      <app-small-card
-        [label]="team.name"
-        [imgUrl]="team.imgUrl"
-        class="activity-card"
-        (click)="navigateToTeam(team.id)"
-      ></app-small-card>
+  <div *ngIf="teamScores.length > 0">
+    <p>Please score teams below</p>
+
+    <div class="teams">
+      <div
+        class="team-section"
+        *ngFor="let teamScore of teamScores; let i = index"
+      >
+        <app-team-card
+          [id]="teamScore.team.id"
+          [label]="teamScore.team.name"
+          [imgUrl]="teamScore.team.imgUrl"
+          [editable]="true"
+          [totalScore]="teamScore.score"
+          [maxScore]="teamScore.maxScore"
+          [myScore]="teamScore.myScore"
+          class="team-card"
+          (score)="scoreTeam($event)"
+          (edit)="editTeam(teamScore.team.id)"
+        ></app-team-card>
+      </div>
     </div>
+  </div>
+  <div *ngIf="teamScores.length <= 0">
+    <p>No Teams added</p>
+  </div>
+  <div *ngIf="newScores.length > 0" class="update">
+    <app-update-footer (update)="updateScores()"></app-update-footer>
   </div>
 </div>
