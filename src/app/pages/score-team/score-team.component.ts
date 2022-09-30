@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -15,45 +15,58 @@ import { AppState } from 'src/app/store';
 @Component({
   selector: 'app-score-team',
   templateUrl: './score-team.component.html',
-  styleUrls: ['./score-team.component.scss']
+  styleUrls: ['./score-team.component.scss'],
 })
 export class ScoreTeamComponent implements OnInit {
-
   backUrl: string = UrlConstants.viewActivity;
   team: Team | undefined | null = null;
-  categories: Category[] | undefined | null = null;
+  categories!: any;
   needsSaving: boolean = false;
   dataToSave: any[] = [];
   userId: string | undefined | null = null;
   // currentActivity: Activity = {}
   constructor(
-    private route: ActivatedRoute, 
-    private teamService: TeamService, 
+    private route: ActivatedRoute,
+    private router: Router,
+    private teamService: TeamService,
     private categoryService: CategoryService,
     private scoreService: ScoreService,
     private store: Store<AppState>
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    const teamId = this.route.snapshot.paramMap.get('teamId') || "";
-    this.teamService.getTeamById(teamId).pipe(take(1)).subscribe((team) =>  {
-      this.team = team;
-      this.categoryService.getCategoriesByTeamId(this.team.id).pipe(take(1)).subscribe((data) =>  {
-        this.categories = data;
-      })
-    });
-    this.store.select('auth')
-    .pipe(take(1))
-    .subscribe((store) => {
-      if (store) {
-        this.userId = store.id;
-      }
-    })
+    const teamId = this.route.snapshot.paramMap.get('teamId') || '';
+
+    this.store
+      .select('auth')
+      .pipe(take(1))
+      .subscribe((store) => {
+        if (store) {
+          this.userId = store.id;
+          this.teamService
+            .getTeamById(teamId)
+            .pipe(take(1))
+            .subscribe((team) => {
+              this.team = team;
+              this.categoryService
+                .getCategoriesByTeamId(this.team.id, store.id)
+                .pipe(take(1))
+                .subscribe((data) => {
+                  this.categories = data;
+                  console.log(this.categories);
+                });
+            });
+        } else {
+          this.router.navigate([UrlConstants.home]);
+        }
+      });
   }
 
   starSelected(value: any) {
     this.needsSaving = value.value > 0;
-    const exist = this.dataToSave.findIndex((d:any)=> d.catId === value.catId);
+    const exist = this.dataToSave.findIndex(
+      (d: any) => d.catId === value.catId
+    );
     if (exist > -1) {
       this.dataToSave[exist].value = value.value;
     } else {
@@ -63,15 +76,14 @@ export class ScoreTeamComponent implements OnInit {
 
   onClickSave() {
     this.needsSaving = false;
-    const prepared: UpdateScoreRequest[] = Object.assign(this.dataToSave.map ( d => ({
+    const prepared: UpdateScoreRequest[] = Object.assign(
+      this.dataToSave.map((d) => ({
         userId: this.userId,
         categoryId: d.catId,
-        score: d.value
-    })));
+        score: d.value,
+      }))
+    );
 
-
-     this.scoreService.updateScores(prepared).subscribe((data => {
-     }));
+    this.scoreService.updateScores(prepared).subscribe((data) => {});
   }
-
 }

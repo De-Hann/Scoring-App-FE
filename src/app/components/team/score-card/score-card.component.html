@@ -1,15 +1,18 @@
 <div class="score-card-container">
   <div class="top">
     <div class="name">
-      <div>{{category?.name}}</div>
+      <div>{{ category?.name }}</div>
       <span>the team</span>
     </div>
     <div class="score">
-      <div>{{rating}}/5</div>
+      <div>{{ rating }}/5</div>
       <span>Score</span>
     </div>
   </div>
   <div class="rating">
-    <p-rating [(ngModel)]="rating" (onRate)="onStarSelect($event.value)"></p-rating>
+    <p-rating
+      [(ngModel)]="rating"
+      (onRate)="onStarSelect($event.value)"
+    ></p-rating>
   </div>
 </div>

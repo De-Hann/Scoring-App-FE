@@ -1,12 +1,22 @@
-<app-navigation backUrl="{{backUrl + '/' + team?.activityId}}" label="{{team?.name}}"></app-navigation>
+<app-navigation
+  backUrl="{{ backUrl + '/' + team?.activityId }}"
+  label="{{ team?.name }}"
+></app-navigation>
 
 <div class="teams-container">
   <h3 class="header">Score</h3>
   <p class="sub-header">Please score each item below</p>
 
-  <ng-container *ngIf="categories != null && categories.length > 0; else noData">
+  <ng-container
+    *ngIf="categories != null && categories.length > 0; else noData"
+  >
     <div class="scores">
-      <app-score-card *ngFor="let cat of categories" (starSelect)="starSelected($event)" [category]="cat"></app-score-card>
+      <app-score-card
+        *ngFor="let cat of categories"
+        [score]="cat.score"
+        (starSelect)="starSelected($event)"
+        [category]="cat"
+      ></app-score-card>
     </div>
   </ng-container>
 
@@ -16,9 +26,7 @@
 
   <ng-template #noData>
     <div>
-      <span>{{team?.name}} does not belong to any categories</span>
+      <span>{{ team?.name }} does not belong to any categories</span>
     </div>
   </ng-template>
-  
-  
 </div>

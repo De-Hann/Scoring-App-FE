@@ -9,9 +9,7 @@ import { ScoreService } from 'src/app/service/score.service';
 import { AppState } from 'src/app/store';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
-import { Score, UpdateScoreRequest } from 'src/app/models/score';
 import { TeamScores } from 'src/app/models/teamScores';
-import * as teamActions from '../../store/actions/team.actions';
 
 @Component({
   selector: 'app-teams',
@@ -32,7 +30,6 @@ export class TeamsComponent implements OnInit {
     private router: Router,
     private activityService: ActivityService,
     private teamService: TeamService,
-    private scoreService: ScoreService,
     private toastService: ToastService,
     private store: Store<AppState>
   ) {
