@@ -35,7 +35,7 @@ export class LeaderboardComponent implements OnInit {
 
   getActvityScores(activity: Activity) {
     this.score$ = null;
-    setTimeout(() => this.score$ = this.scoreService.getActivityScore(activity.id), 1000);
+    this.score$ = this.scoreService.getActivityLeaderBoard(activity.id);
   }
 
 }
