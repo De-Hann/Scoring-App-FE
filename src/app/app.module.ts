@@ -30,6 +30,7 @@ import { CreateEventComponent } from './pages/create-event/create-event.componen
 import { CreateActivityComponent } from './pages/create-activity/create-activity.component';
 import { CreateTeamComponent } from './pages/create-team/create-team.component';
 import { UpdateFooterComponent } from './components/team/update-footer/update-footer.component';
+import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { UpdateFooterComponent } from './components/team/update-footer/update-fo
     CreateActivityComponent,
     CreateTeamComponent,
     UpdateFooterComponent,
+    CalcScoreComponent,
   ],
   imports: [
     BrowserModule,

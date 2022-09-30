@@ -52,12 +52,11 @@ export class LoginComponent implements OnInit {
         )
         .subscribe({
           next: (res: any) => {
-            console.log(res);
-
             const auth: AuthStateModel = {
               id: res.id,
               userName: res.username,
               token: res.token,
+              userType: res.userType,
             };
 
             this.store.dispatch(authActions.login({ auth }));

@@ -7,18 +7,22 @@
         <p class="score" *ngIf="maxScore > 0">
           {{ totalScore + " / " + maxScore }}
         </p>
+        <p class="score" *ngIf="maxScore <= 0">Not Scored</p>
       </div>
       <i class="pi pi-pencil" *ngIf="editable" (click)="clickEdit()"></i>
       ></p-card
     >
   </div>
-  <div class="score">
-    <h5 class="header">Your Score: {{ myScore }} / 10</h5>
-    <p-slider
+  <div class="score" *ngIf="scorable">
+    <h5 class="header">
+      {{ myScore > 0 ? "Your Score: " + myScore + " / 10" : "Not yet scored" }}
+    </h5>
+    <p-rating
+      id="{{ 'rating-' + id }}"
       [(ngModel)]="myScore"
-      (onChange)="clickScore()"
-      [min]="0"
-      [max]="10"
-    ></p-slider>
+      [stars]="10"
+      (onRate)="clickScore($event)"
+      (onCancel)="clickScore($event)"
+    ></p-rating>
   </div>
 </div>

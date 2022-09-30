@@ -8,7 +8,7 @@
     imgUrl="{{ currentEvent?.imgUrl }}"
   ></app-banner>
 
-  <div class="controls">
+  <div class="controls" *ngIf="isAdmin">
     <button
       pButton
       class="btn btn-primary"
@@ -30,7 +30,7 @@
           [label]="activity.name"
           [imgUrl]="activity.imgUrl"
           class="activity-card"
-          [editable]="true"
+          [editable]="isAdmin"
           (view)="navigateToActivity(activity.id)"
           (edit)="editActivity(activity.id)"
         ></app-small-card>

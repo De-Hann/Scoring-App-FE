@@ -45,7 +45,6 @@ export class CreateActivityComponent implements OnInit {
             .getActivityById(activityId)
             .pipe(take(1))
             .subscribe((activity) => {
-              console.log(activity);
               if (activity) {
                 this.createActivityForm.patchValue({
                   name: activity.name,

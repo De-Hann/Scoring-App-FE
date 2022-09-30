@@ -10,6 +10,7 @@ export class UrlConstants {
   public static viewActivity: string = 'view-activity';
   public static login: string = 'login';
   public static logout: string = 'logout';
+  public static calculate_scores: string = 'calculate-scores';
 }
 
 export class GeneralConstants {

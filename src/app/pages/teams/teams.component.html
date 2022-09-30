@@ -1,6 +1,6 @@
 <div class="container" [class.edited]="newScores.length > 0" *ngIf="!loading">
   <app-navigation
-    label="{{ currentActivity?.name }}"
+    label="{{ currentEvent?.name + ' - ' + currentActivity?.name }}"
     [backUrl]="backUrl"
   ></app-navigation>
   <app-banner
@@ -8,7 +8,14 @@
     imgUrl="{{ currentActivity?.imgUrl }}"
   ></app-banner>
 
-  <div class="controls">
+  <div class="controls" *ngIf="isAdmin">
+    <button
+      pButton
+      class="btn btn-secondary"
+      type="button"
+      label="Calculate Scores"
+      (click)="navigateToCalc()"
+    ></button>
     <button
       pButton
       class="btn btn-primary"
@@ -31,9 +38,9 @@
           [id]="teamScore.team.id"
           [label]="teamScore.team.name"
           [imgUrl]="teamScore.team.imgUrl"
-          [editable]="true"
-          [totalScore]="teamScore.score"
-          [maxScore]="teamScore.maxScore"
+          [editable]="isAdmin"
+          [maxScore]="teamScore.myScore > 0 ? 10 : 0"
+          [totalScore]="teamScore.myScore"
           [myScore]="teamScore.myScore"
           class="team-card"
           (score)="scoreTeam($event)"

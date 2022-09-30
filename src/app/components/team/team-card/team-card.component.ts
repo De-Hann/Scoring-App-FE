@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-team-card',
@@ -13,6 +13,7 @@ export class TeamCardComponent {
   @Input() totalScore: number = 0;
   @Input() maxScore: number = 0;
   @Input() myScore: number = 0;
+  @Input() scorable: boolean = true;
 
   @Output() score: EventEmitter<{ id: string; score: number }> =
     new EventEmitter<{ id: string; score: number }>();
@@ -22,7 +23,7 @@ export class TeamCardComponent {
     this.edit.emit(this.id);
   }
 
-  clickScore() {
-    this.score.emit({ id: this.id, score: this.myScore });
+  clickScore(e: any) {
+    this.score.emit({ id: this.id, score: this.myScore ? this.myScore : 0 });
   }
 }

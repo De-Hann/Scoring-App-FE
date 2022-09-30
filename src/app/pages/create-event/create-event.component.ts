@@ -49,7 +49,6 @@ export class CreateEventComponent implements OnInit {
           .getEventById(id)
           .pipe(take(1))
           .subscribe((event) => {
-            console.log(event);
             if (event) {
               this.dateStart = new Date(event.dateStart);
               this.dateEnd = new Date(event.dateEnd);

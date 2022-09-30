@@ -10,6 +10,7 @@ import { AuthGuard } from './service/auth.guard';
 import { CreateEventComponent } from './pages/create-event/create-event.component';
 import { CreateActivityComponent } from './pages/create-activity/create-activity.component';
 import { CreateTeamComponent } from './pages/create-team/create-team.component';
+import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
     path: UrlConstants.createTeam + '/:activityId',
     canActivate: [AuthGuard],
     component: CreateTeamComponent,
+  },
+  {
+    path: UrlConstants.calculate_scores + '/:activityId',
+    canActivate: [AuthGuard],
+    component: CalcScoreComponent,
   },
   {
     path: UrlConstants.editTeam + '/:activityId/:teamId',

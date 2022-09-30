@@ -29,6 +29,7 @@ export class TeamsComponent implements OnInit {
   teamScores: TeamScores[] = [];
   newScores: { teamId: string; score: number }[] = [];
   backUrl!: string;
+  isAdmin: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,6 +55,8 @@ export class TeamsComponent implements OnInit {
         }
 
         if (id) {
+          this.isAdmin = store?.userType === 1;
+
           this.activityService.getActivityById(id).subscribe((activity) => {
             if (activity) {
               this.currentActivity = activity;
@@ -68,7 +71,6 @@ export class TeamsComponent implements OnInit {
                       .getTeamScoresByActivity(this.userId, activity.id)
                       .subscribe({
                         next: (teamData) => {
-                          console.log(teamData);
                           if (teamData) {
                             this.teamScores = teamData;
                           }
@@ -101,8 +103,9 @@ export class TeamsComponent implements OnInit {
   ngOnInit(): void {}
 
   scoreTeam($event: any) {
-    console.log('score', $event);
-    const id = this.newScores.findIndex((x) => x.teamId == $event.id);
+    const id = this.newScores.findIndex((x) => {
+      x.teamId === $event.id;
+    });
     if (id !== -1) {
       this.newScores[id] = $event.score;
     } else {
@@ -136,8 +139,6 @@ export class TeamsComponent implements OnInit {
               (x) => x.team.id === score.teamId
             );
 
-            console.log({ ...this.teamScores[index] });
-
             if (index > -1) {
               if (this.teamScores[index].myScore !== 0) {
                 this.teamScores[index].score -=
@@ -149,7 +150,6 @@ export class TeamsComponent implements OnInit {
                 this.teamScores[index].myScore = score.score;
               }
             }
-            console.log({ ...this.teamScores[index] });
           });
 
           this.clear();
@@ -167,6 +167,12 @@ export class TeamsComponent implements OnInit {
   navigateToCreate() {
     this.router.navigate([
       UrlConstants.createTeam + '/' + this.currentActivity.id,
+    ]);
+  }
+
+  navigateToCalc() {
+    this.router.navigate([
+      UrlConstants.calculate_scores + '/' + this.currentActivity.id,
     ]);
   }
 

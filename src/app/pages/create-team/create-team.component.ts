@@ -46,7 +46,6 @@ export class CreateTeamComponent implements OnInit {
             .pipe(take(1))
             .subscribe({
               next: (team) => {
-                console.log(team);
                 if (team) {
                   this.createTeamForm.patchValue({
                     name: team.name,

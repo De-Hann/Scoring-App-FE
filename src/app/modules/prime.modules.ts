@@ -10,7 +10,7 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
-import { SliderModule } from 'primeng/slider';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   exports: [
@@ -25,7 +25,7 @@ import { SliderModule } from 'primeng/slider';
     DividerModule,
     ToastModule,
     CalendarModule,
-    SliderModule,
+    RatingModule,
   ],
 })
 export class PrimeModule {}

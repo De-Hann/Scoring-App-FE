@@ -7,3 +7,10 @@ export interface TeamScores {
   maxScore: number;
   myScore: number;
 }
+
+export interface TeamScoresNormalized {
+  team: Team;
+  score: number;
+  maxScore: number;
+  normalizedScore: number;
+}

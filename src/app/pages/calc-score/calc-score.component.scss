@@ -21,12 +21,15 @@
       align-items: flex-start;
       .team-section {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: nowrap;
         align-content: flex-start;
-        justify-content: center;
-        align-items: flex-start;
+        justify-content: flex-start;
+        align-items: center;
         width: 100%;
+        .position {
+          margin: 10px;
+        }
         .team-card {
         }
         .team-details {
