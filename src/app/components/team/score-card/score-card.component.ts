@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoreCardComponent implements OnInit {
 
+  rating: number = 0;
   constructor() { }
 
   ngOnInit(): void {

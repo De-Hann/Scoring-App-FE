@@ -5,7 +5,9 @@
   <p class="sub-header">Please score each item below</p>
 
   <ng-container *ngIf="categories != null && categories.length > 0; else noData">
-    <app-score-card *ngFor="let cat of categories"></app-score-card>
+    <div class="scores">
+      <app-score-card *ngFor="let cat of categories"></app-score-card>
+    </div>
   </ng-container>
 
   <ng-template #noData>

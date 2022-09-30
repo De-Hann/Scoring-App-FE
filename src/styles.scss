@@ -67,6 +67,23 @@ h6 {
   }
 }
 
+//rating
+.p-rating .p-rating-icon {
+  font-size: 32px;
+}
+
+.p-rating .p-rating-icon.pi-star-fill {
+  color: #7FBE38;
+}
+
+.p-rating .p-rating-icon:focus {
+  box-shadow: none;
+}
+
+.p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {
+  color: #7FBE38;
+}
+
 body {
   margin: 0;
   padding: 0;

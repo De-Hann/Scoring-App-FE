@@ -27,6 +27,7 @@ export class ScoreTeamComponent implements OnInit {
       this.team = team;
       this.categoryService.getCategoriesByActivityId(this.team.activityId).pipe(take(1)).subscribe((data) =>  {
         this.categories = data;
+        console.log(data)
       })
     });
   }
