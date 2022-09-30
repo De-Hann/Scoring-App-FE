@@ -6,13 +6,6 @@
   <div class="controls" *ngIf="isAdmin">
     <button
       pButton
-      class="btn btn-secondary"
-      type="button"
-      label="Calculate Scores"
-      (click)="navigateToCalc()"
-    ></button>
-    <button
-      pButton
       class="btn btn-primary"
       type="button"
       label="Add Team"
@@ -32,10 +25,8 @@
           [id]="teamScore.team.id"
           [label]="teamScore.team.name"
           [imgUrl]="teamScore.team.imgUrl"
-          [editable]="isAdmin"
-          [maxScore]="teamScore.myScore > 0 ? 10 : 0"
-          [totalScore]="teamScore.myScore"
-          [myScore]="teamScore.myScore"
+          [scored]="teamScore.scored"
+          [categories]="teamScore.categories"
           class="team-card"
           (score)="scoreTeam($event)"
         ></app-team-card>

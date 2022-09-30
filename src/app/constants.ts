@@ -9,7 +9,6 @@ export class UrlConstants {
   public static viewActivity: string = 'view-activity';
   public static login: string = 'login';
   public static logout: string = 'logout';
-  public static calculate_scores: string = 'calculate-scores';
   public static leaderboard: string = 'leaderboard';
   public static score_team: string = 'score-team';
 }

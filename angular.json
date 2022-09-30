@@ -33,7 +33,8 @@
               "src/web.config"
             ],
             "styles": [
-              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/tailwind-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "src/styles.scss",
               "node_modules/primeicons/primeicons.css"

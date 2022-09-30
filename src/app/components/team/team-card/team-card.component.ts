@@ -9,11 +9,8 @@ export class TeamCardComponent {
   @Input() id: string = '';
   @Input() label: string = '';
   @Input() imgUrl: string = '';
-  @Input() editable: boolean = false;
-  @Input() totalScore: number = 0;
-  @Input() maxScore: number = 0;
-  @Input() myScore: number = 0;
-  @Input() scorable: boolean = true;
+  @Input() scored: number = 0;
+  @Input() categories: number = 0;
 
   @Output() score: EventEmitter<string> = new EventEmitter<string>();
 

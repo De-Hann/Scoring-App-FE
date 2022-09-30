@@ -39,11 +39,6 @@ const routes: Routes = [
     component: CreateTeamComponent,
   },
   {
-    path: UrlConstants.calculate_scores + '/:activityId',
-    canActivate: [AuthGuard],
-    component: CalcScoreComponent,
-  },
-  {
     path: UrlConstants.editTeam + '/:activityId/:teamId',
     canActivate: [AuthGuard],
     component: CreateTeamComponent,
