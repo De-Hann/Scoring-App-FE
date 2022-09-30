@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-score-card',
@@ -8,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class ScoreCardComponent implements OnInit {
 
   rating: number = 0;
+  
+  @Output() starSelect: EventEmitter<any> = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onStarSelect(val: number) {
+    this.starSelect.emit({value: val, catId: 1});
   }
 
 }

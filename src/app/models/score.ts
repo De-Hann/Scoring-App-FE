@@ -8,7 +8,7 @@ export interface Score {
 
 export interface UpdateScoreRequest {
   userId: string;
-  teamId: string;
+  categoryId: string;
   score: number;
 }
 

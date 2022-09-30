@@ -10,6 +10,6 @@
     </div>
   </div>
   <div class="rating">
-    <p-rating [(ngModel)]="rating"></p-rating>
+    <p-rating [(ngModel)]="rating" (onRate)="onStarSelect($event.value)"></p-rating>
   </div>
 </div>

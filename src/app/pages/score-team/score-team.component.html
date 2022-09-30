@@ -6,9 +6,13 @@
 
   <ng-container *ngIf="categories != null && categories.length > 0; else noData">
     <div class="scores">
-      <app-score-card *ngFor="let cat of categories"></app-score-card>
+      <app-score-card *ngFor="let cat of categories" (starSelect)="starSelected($event)"></app-score-card>
     </div>
   </ng-container>
+
+  <div class="save" *ngIf="needsSaving && userId != null">
+    <app-update-footer (update)="onClickSave()"></app-update-footer>
+  </div>
 
   <ng-template #noData>
     <div>
