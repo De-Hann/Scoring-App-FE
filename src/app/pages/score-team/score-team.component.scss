@@ -17,6 +17,7 @@
 .scores {
   width: 100%;
   max-height: calc(100vh - 230px);
+  overflow-y: auto;
 }
 
 .save {
