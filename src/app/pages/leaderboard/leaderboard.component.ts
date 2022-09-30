@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UrlConstants } from 'src/app/constants';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
-  constructor() { }
+  backUrl: string = "";
+  constructor() {
+    this.backUrl = UrlConstants.home;
+  }
 
   ngOnInit(): void {
   }
