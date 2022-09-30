@@ -1,136 +1,72 @@
-.teams-card {
-  padding: 5px;
-  margin-bottom: 20px;
+.team-card {
+  width: 335px;
+  height: 80px;
+
   ::ng-deep {
-    .details {
-      .card {
-        cursor: pointer;
-        .p-card {
-          border-radius: 10px;
-          .p-card-body {
-            padding: 0px;
-            overflow: hidden;
-            border-radius: 10px;
+    .p-card {
+      &.p-component {
+        background: linear-gradient(90deg, #020208 0.9%, #112422 98.51%);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+        border: 1.5px solid #fff;
+        .p-card-body {
+          width: 335px;
+          height: 80px;
+          padding: 0;
 
-            .p-card-content {
-              border-radius: 10px;
-              position: relative;
-              width: 350px;
-              height: 100px;
-              div {
-                width: 100%;
-                height: 100%;
-                img {
-                  position: absolute;
-                  top: 0;
-                  left: 0;
-                  width: 200%;
-                  height: 200%;
-                  transition: var(--animation-time);
-                  object-fit: cover;
-                }
-                p {
-                  text-align: center;
-                  font-size: 24px;
-                  font-weight: 800;
-                  transition: var(--animation-time);
-                  color: #fff;
-                  &.name {
-                    margin: 0px;
-                    position: absolute;
-                    top: calc(50% - 20px);
-                    left: 0px;
-                    width: 200px;
-                    height: 40px;
-                  }
-                  &.score {
-                    position: absolute;
-                    bottom: 10px;
-                    right: 0px;
-                  }
-                }
+          .p-card-content {
+            width: 335px;
+            height: 80px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-content: center;
+            justify-content: center;
+            align-items: stretch;
+
+            .custom-content {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              align-content: center;
+              flex-wrap: nowrap;
+              flex-direction: row;
+              margin: auto 20px;
+
+              .name {
+                font-style: normal;
+                font-weight: 500;
+                font-size: 22px;
+                line-height: 28px;
               }
-              .pi.pi-pencil {
-                color: #fff;
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                width: 40px;
-                height: 40px;
-                border-radius: 20px;
+
+              .entry-container {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 flex-wrap: nowrap;
-                align-content: center;
+                align-content: flex-end;
                 justify-content: center;
-                align-items: center;
-              }
-
-              &:hover {
-                img {
-                  width: 220%;
-                  height: 220%;
-                }
+                align-items: flex-end;
                 p {
-                  font-size: 26px;
+                  color: #e6e1e5 !important;
+                  font-style: normal;
+                  font-weight: 400;
+                  margin: 0;
+                }
+                .entries {
+                  font-size: 28px;
+                  line-height: 36px;
+                }
+
+                .entry-type {
+                  font-size: 11px;
+                  line-height: 16px;
                 }
               }
             }
           }
         }
-        &.default {
-          .p-card {
-            .p-card-body {
-              background: rgb(34, 97, 4);
-              background: linear-gradient(
-                90deg,
-                rgba(34, 97, 4, 1) 50%,
-                rgba(116, 204, 22, 1) 100%
-              );
-            }
-          }
-        }
-      }
-    }
-    .score {
-      padding: 0px 20px;
-      .p-rating {
-        .pi-star-fill {
-          &:nth-child(2) {
-            color: #226104 !important;
-          }
-          &:nth-child(3) {
-            color: #2b6d06;
-          }
-          &:nth-child(4) {
-            color: #347908 !important;
-          }
-          &:nth-child(5) {
-            color: #3d850a;
-          }
-          &:nth-child(6) {
-            color: #46910c !important;
-          }
-          &:nth-child(7) {
-            color: #509c0e;
-          }
-          &:nth-child(8) {
-            color: #59a810;
-          }
-          &:nth-child(9) {
-            color: #62b412;
-          }
-
-          &:nth-child(10) {
-            color: #6bc014;
-          }
-          &:nth-child(11) {
-            color: #74cc16;
-          }
-        }
-      }
-      .header {
-        margin: 5px 0px;
       }
     }
   }

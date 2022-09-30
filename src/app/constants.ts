@@ -11,6 +11,7 @@ export class UrlConstants {
   public static logout: string = 'logout';
   public static calculate_scores: string = 'calculate-scores';
   public static leaderboard: string = 'leaderboard';
+  public static score_team: string = 'score-team';
 }
 
 export class GeneralConstants {
