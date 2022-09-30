@@ -3,11 +3,6 @@
     label="{{currentActivity?.name}}"
     [backUrl]="backUrl"
   ></app-navigation>
-  <app-banner
-    *ngIf="currentActivity?.imgUrl !== ''"
-    imgUrl="{{ currentActivity?.imgUrl }}"
-  ></app-banner>
-
   <div class="controls" *ngIf="isAdmin">
     <button
       pButton
@@ -26,15 +21,14 @@
     ></button>
   </div>
 
-  <div *ngIf="teamScores.length > 0">
-    <p>Please score teams below</p>
+  <div class="teams-container">
+    <h3 class="header">The Brewers</h3>
+    <p class="sub-header">Please score breweing team below</p>
 
-    <div class="teams">
-      <div
-        class="team-section"
-        *ngFor="let teamScore of teamScores; let i = index"
-      >
+    <div class="teams" *ngIf="teamScores.length > 0">
+      <div class="team-section">
         <app-team-card
+          *ngFor="let teamScore of teamScores; let i = index"
           [id]="teamScore.team.id"
           [label]="teamScore.team.name"
           [imgUrl]="teamScore.team.imgUrl"
@@ -44,15 +38,14 @@
           [myScore]="teamScore.myScore"
           class="team-card"
           (score)="scoreTeam($event)"
-          (edit)="editTeam(teamScore.team.id)"
         ></app-team-card>
       </div>
     </div>
+    <div *ngIf="teamScores.length <= 0">
+      <p>No Teams added</p>
+    </div>
   </div>
-  <div *ngIf="teamScores.length <= 0">
-    <p>No Teams added</p>
-  </div>
-  <div *ngIf="newScores.length > 0" class="update">
+  <!-- <div *ngIf="newScores.length > 0" class="update">
     <app-update-footer (update)="updateScores()"></app-update-footer>
-  </div>
+  </div> -->
 </div>

@@ -31,6 +31,8 @@ import { UpdateFooterComponent } from './components/team/update-footer/update-fo
 import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 import { stringContains } from './pipes/stringContains.pipe';
+import { ScoreCardComponent } from './components/team/score-card/score-card.component';
+import { ScoreTeamComponent } from './pages/score-team/score-team.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,8 @@ import { stringContains } from './pipes/stringContains.pipe';
     UpdateFooterComponent,
     CalcScoreComponent,
     LeaderboardComponent,
+    ScoreCardComponent,
+    ScoreTeamComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { ScoreTeamComponent } from './pages/score-team/score-team.component';
 import { LoginComponent } from './pages/login/login.component';
 import { TeamsComponent } from './pages/teams/teams.component';
 import { ViewEventComponent } from './pages/view-event/view-event.component';
@@ -46,6 +47,11 @@ const routes: Routes = [
     path: UrlConstants.editTeam + '/:activityId/:teamId',
     canActivate: [AuthGuard],
     component: CreateTeamComponent,
+  },
+  {
+    path: UrlConstants.score_team + '/:teamId',
+    canActivate: [AuthGuard],
+    component: ScoreTeamComponent,
   },
   {
     path: UrlConstants.viewActivity + '/:id',
