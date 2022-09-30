@@ -18,10 +18,11 @@
   width: 100%;
   max-height: calc(100vh - 230px);
   overflow-y: auto;
+  margin-bottom: 100px;
 }
 
 .save {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
 }
