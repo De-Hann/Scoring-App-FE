@@ -61,6 +61,7 @@ export class TeamsComponent implements OnInit {
                   next: (teamData) => {
                     if (teamData) {
                       this.teamScores = teamData;
+                      console.log(this.teamScores);
                     }
                     this.loading = false;
                   },
@@ -135,12 +136,6 @@ export class TeamsComponent implements OnInit {
   navigateToCreate() {
     this.router.navigate([
       UrlConstants.createTeam + '/' + this.currentActivity.id,
-    ]);
-  }
-
-  navigateToCalc() {
-    this.router.navigate([
-      UrlConstants.calculate_scores + '/' + this.currentActivity.id,
     ]);
   }
 }

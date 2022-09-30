@@ -3,9 +3,8 @@ import { Team } from './team';
 
 export interface TeamScores {
   team: Team;
-  score: number;
-  maxScore: number;
-  myScore: number;
+  scored: number;
+  categories: number;
 }
 
 export interface TeamScoresNormalized {
