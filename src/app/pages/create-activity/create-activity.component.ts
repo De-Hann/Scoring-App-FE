@@ -36,7 +36,7 @@ export class CreateActivityComponent implements OnInit {
 
       if (eventId) {
         this.eventId = eventId;
-        this.backUrl = UrlConstants.viewEvent + '/' + eventId;
+        this.backUrl = UrlConstants.home;
 
         if (activityId) {
           this.editing = true;
@@ -87,13 +87,12 @@ export class CreateActivityComponent implements OnInit {
       const model: CreateActivity = {
         name: name,
         imgUrl: imgUrl,
-        eventId: this.eventId,
       };
 
       if (!this.editing) {
         this.activityService.createActivity(model).subscribe({
           next: (res) => {
-            this.router.navigate([UrlConstants.viewEvent + '/' + this.eventId]);
+            this.router.navigate([UrlConstants.home]);
           },
           error: () => {
             this.toastService.addToast(

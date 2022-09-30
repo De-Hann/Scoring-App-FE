@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { EventsComponent } from './pages/events/events.component';
 
 import { PrimeModule } from './modules/prime.modules';
 import { SpinnerComponent } from './components/shared/spinner/spinner.component';
@@ -26,7 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './providers/interceptor.providers';
 import { metaReducers, reducers } from './store';
 import { ToastService } from './service/toast.service';
-import { CreateEventComponent } from './pages/create-event/create-event.component';
 import { CreateActivityComponent } from './pages/create-activity/create-activity.component';
 import { CreateTeamComponent } from './pages/create-team/create-team.component';
 import { UpdateFooterComponent } from './components/team/update-footer/update-footer.component';
@@ -34,7 +32,7 @@ import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
 @NgModule({
   declarations: [
     AppComponent,
-    EventsComponent,
+
     SpinnerComponent,
     TeamsComponent,
     ViewEventComponent,
@@ -44,7 +42,7 @@ import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
     SmallCardComponent,
     LoginComponent,
     LogoutComponent,
-    CreateEventComponent,
+
     CreateActivityComponent,
     CreateTeamComponent,
     UpdateFooterComponent,
