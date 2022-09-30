@@ -1,13 +1,9 @@
-<div class="container" *ngIf="!loading">
-  <app-navigation
-    label="{{ currentEvent?.name }}"
-    [backUrl]="backUrl"
-  ></app-navigation>
-  <app-banner
-    *ngIf="currentEvent?.imgUrl !== ''"
-    imgUrl="{{ currentEvent?.imgUrl }}"
-  ></app-banner>
-
+<div class="container">
+  <div class="nav">
+    <img src="../../../assets/logout.svg" alt="" (click)="logout()" />
+    <h3>Product</h3>
+    <img src="../../../assets/leaderboard.svg" alt="" (click)="leaderboard()" />
+  </div>
   <div class="controls" *ngIf="isAdmin">
     <button
       pButton
@@ -18,10 +14,14 @@
       (click)="navigateToCreate()"
     ></button>
   </div>
-  <div *ngIf="this.activities.length > 0">
+  <div class="activity-container">
+    <div class="crest">
+      <img src="../../../assets/Crest.svg" alt="" />
+    </div>
+    <h2>Activities</h2>
     <p>Please select an activity below</p>
 
-    <div class="activities" *ngIf="!loading">
+    <div class="activities" *ngIf="this.activities.length > 0 && !loading">
       <div
         class="activity-section"
         *ngFor="let activity of activities; let i = index"
@@ -42,13 +42,11 @@
         </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="this.activities.length <= 0">
-    <p>No Activities found</p>
-  </div>
-</div>
-<div class="container" *ngIf="loading">
-  <div class="loader">
-    <app-spinner></app-spinner>
+    <div class="loader" *ngIf="loading">
+      <app-spinner></app-spinner>
+    </div>
+    <div *ngIf="this.activities.length <= 0">
+      <p>No Activities found</p>
+    </div>
   </div>
 </div>
