@@ -25,6 +25,48 @@ h6 {
   border: 1px solid #226104 !important;
 }
 
+//tabs
+.p-tabview .p-tabview-panels {
+  background: none;
+}
+
+
+.p-tabview .p-tabview-nav {
+  background: none;
+  border: 1px solid transparent;
+  border-width: 0 0 5px 0;
+
+  li {
+    flex: 1;
+  }
+
+  li .p-tabview-nav-link {
+    background: none;
+    border-bottom: 5px solid transparent;
+  }
+  li.p-highlight .p-tabview-nav-link {
+    background: none;
+    border-bottom: 5px solid #7FBE38;
+  }
+
+  li .p-tabview-nav-link:not(.p-disabled):focus {
+    box-shadow: none;
+  }
+
+  li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
+    background: #56555585;
+  }
+
+  .p-tabview-ink-bar {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    transition: 500ms cubic-bezier(0.35, 0, 0.25, 1);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;

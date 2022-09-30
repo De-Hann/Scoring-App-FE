@@ -1,0 +1,44 @@
+<app-navigation [backUrl]="backUrl" label="Leaderboard"></app-navigation>
+
+<p-tabView *ngIf="activities && !load; else loader" (onChange)="getActvityScores(activities[$event.index])">
+  <p-tabPanel *ngFor="let act of activities">
+    <ng-template pTemplate="header" >
+      <div class="leaderboard-tab">
+        <div class="lb-icon">
+          <div *ngIf="act.name | stringContains: 'beer'" style="background: url('/assets/Beer.svg'); width: 40px; height: 40px;"> </div>
+          <div *ngIf="act.name | stringContains: 'potjie'" style="background: url('/assets/Potjie.svg'); width: 40px; height: 40px;"> </div>
+        </div>
+        <div class="lb-name">{{act.name}}</div>
+      </div>
+    </ng-template>
+      
+    <div class="leaderboard-table" *ngIf="score$ | async as scores; else loader">
+      <ng-container *ngIf="scores.length > 0; else noScoreData">
+        <div class="row" *ngFor="let score of scores; let i=index">
+          <div class="rank"><span>{{i + 1}}</span></div>
+          <div class="team">
+            <span class="team-name">{{score.teamName}}</span>
+            <span class="team-cat">{{score.categoryName}}</span>
+          </div>
+          <div class="score">
+            <div>{{score.score}}/10</div>
+            <span>Score</span>
+          </div>
+        </div>
+      </ng-container>
+      
+      <ng-template #noScoreData>
+        <div class="loader">
+          <span> {{act.name}} score data is not available</span>
+        </div>
+      </ng-template>
+    </div>
+
+  </p-tabPanel>
+</p-tabView>
+
+<ng-template #loader>
+  <div class="loader">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>

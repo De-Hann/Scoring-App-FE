@@ -28,6 +28,9 @@ import { ToastService } from './service/toast.service';
 import { CreateActivityComponent } from './pages/create-activity/create-activity.component';
 import { CreateTeamComponent } from './pages/create-team/create-team.component';
 import { UpdateFooterComponent } from './components/team/update-footer/update-footer.component';
+import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
+import { stringContains } from './pipes/stringContains.pipe';
 import { ScoreCardComponent } from './components/team/score-card/score-card.component';
 import { ScoreTeamComponent } from './pages/score-team/score-team.component';
 @NgModule({
@@ -43,10 +46,12 @@ import { ScoreTeamComponent } from './pages/score-team/score-team.component';
     SmallCardComponent,
     LoginComponent,
     LogoutComponent,
-
+    stringContains,
     CreateActivityComponent,
     CreateTeamComponent,
     UpdateFooterComponent,
+    CalcScoreComponent,
+    LeaderboardComponent,
     ScoreCardComponent,
     ScoreTeamComponent,
   ],

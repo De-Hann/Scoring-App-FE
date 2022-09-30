@@ -7,8 +7,11 @@
       align-content: center;
       justify-content: flex-start;
       align-items: center;
+      h3 {
+        margin-left: 10px;
+      }
       button {
-        background-color: #000 !important;
+        background-color: transparent !important;
         border: none !important;
         border: none;
         box-shadow: none;
@@ -19,7 +22,7 @@
         }
 
         .p-button-icon {
-          color: #000;
+          color: #fff;
           opacity: 1;
         }
       }
@@ -29,13 +32,6 @@
         font-weight: 500;
         font-size: 22px;
         line-height: 28px;
-      }
-    }
-
-    .divider {
-      .p-divider {
-        width: 90vw;
-        margin: 5px auto;
       }
     }
   }
