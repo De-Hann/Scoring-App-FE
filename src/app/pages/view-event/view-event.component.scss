@@ -1,5 +1,26 @@
 .container {
   ::ng-deep {
+    .nav {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: space-between;
+      align-items: center;
+      h3 {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 28px;
+        color: #e6e1e5;
+      }
+      img {
+        margin: 10px;
+        width: 36px;
+        height: 36px;
+      }
+    }
     .controls {
       margin: 10px 0px;
       display: flex;
@@ -9,25 +30,42 @@
       justify-content: flex-end;
       align-items: center;
     }
-    .activities {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-content: flex-start;
-      justify-content: flex-start;
-      align-items: flex-start;
-      .activity-section {
+    .activity-container {
+      margin: 10px;
+      .crest {
+        img {
+          width: 200px;
+          height: 150px;
+          margin: 40px;
+        }
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        align-content: flex-start;
+        align-content: center;
         justify-content: center;
+        align-items: center;
+      }
+      .activities {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
         align-items: flex-start;
-        width: 100%;
-        .activity-card {
-        }
-        .activity-details {
-          margin-left: 20px;
+        .activity-section {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-content: flex-start;
+          justify-content: center;
+          align-items: flex-start;
+          width: 100%;
+          .activity-card {
+            margin: 5px 0px;
+          }
+          .activity-details {
+            margin-left: 20px;
+          }
         }
       }
     }

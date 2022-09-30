@@ -1,7 +1,7 @@
 <p-card class="small-card" [class.default]="imgUrl === ''">
-  <div (click)="clickEvent()">
+  <div (click)="clickEvent()" class="custom-content">
     <img *ngIf="imgUrl !== ''" src="{{ imgUrl }}" alt="" />
     <p>{{ label }}</p>
   </div>
-  <i class="pi pi-pencil" *ngIf="editable" (click)="clickEdit()"></i>
+  <!-- <i class="pi pi-pencil" *ngIf="editable" (click)="clickEdit()"></i> -->
 </p-card>

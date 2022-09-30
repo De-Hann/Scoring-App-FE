@@ -4,10 +4,8 @@ import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import { UrlConstants } from 'src/app/constants';
 import { Activity } from 'src/app/models/activity';
-import { Event } from 'src/app/models/event';
 import { TeamScores, TeamScoresNormalized } from 'src/app/models/teamScores';
 import { ActivityService } from 'src/app/service/activity.service';
-import { EventService } from 'src/app/service/event.service';
 import { TeamService } from 'src/app/service/team.service';
 import { ToastService, ToastType } from 'src/app/service/toast.service';
 import { AppState } from 'src/app/store';
@@ -16,12 +14,11 @@ import { AppState } from 'src/app/store';
   selector: 'app-calc-score',
   templateUrl: './calc-score.component.html',
   styleUrls: ['./calc-score.component.scss'],
-  providers: [EventService],
+  providers: [],
 })
 export class CalcScoreComponent implements OnInit {
   userId!: string;
   loading: boolean = true;
-  currentEvent!: Event;
   currentActivity!: Activity;
   teamScores: TeamScoresNormalized[] = [];
   newScores: { teamId: string; score: number }[] = [];
@@ -32,7 +29,6 @@ export class CalcScoreComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private eventService: EventService,
     private activityService: ActivityService,
     private teamService: TeamService,
     private toastService: ToastService,
@@ -58,82 +54,62 @@ export class CalcScoreComponent implements OnInit {
             if (activity) {
               this.currentActivity = activity;
 
-              this.eventService.getEventById(activity.eventId).subscribe({
-                next: (event) => {
-                  if (event) {
-                    this.backUrl =
-                      UrlConstants.viewActivity + '/' + activity.id;
-                    this.currentEvent = event;
+              this.backUrl = UrlConstants.viewActivity + '/' + activity.id;
 
-                    this.teamService
-                      .getTeamScoresByActivity(this.userId, activity.id)
-                      .subscribe({
-                        next: (teamData: TeamScores[]) => {
-                          if (teamData) {
-                            let max = 0;
+              this.teamService
+                .getTeamScoresByActivity(this.userId, activity.id)
+                .subscribe({
+                  next: (teamData: TeamScores[]) => {
+                    if (teamData) {
+                      let max = 0;
 
-                            teamData.forEach((x) => {
-                              if (x.maxScore > max) max = x.maxScore;
-                            });
-
-                            teamData.forEach((x) => {
-                              this.teamScores.push({
-                                team: x.team,
-                                score: x.score,
-                                maxScore: x.maxScore,
-                                normalizedScore: this.normalize(
-                                  x.score,
-                                  max,
-                                  0
-                                ),
-                              });
-                            });
-
-                            this.teamScores.sort((a, b): number => {
-                              return a.normalizedScore === b.normalizedScore
-                                ? 0
-                                : a.normalizedScore > b.normalizedScore
-                                ? -1
-                                : 1;
-                            });
-
-                            let lastPlaced = 1;
-                            this.teamScores.forEach((x, i) => {
-                              if (i > 0) {
-                                if (
-                                  x.normalizedScore !== this.scores[i - 1].score
-                                ) {
-                                  lastPlaced++;
-                                }
-                                this.scores.push({
-                                  placed: lastPlaced,
-                                  score: x.normalizedScore,
-                                  maxScore: x.maxScore,
-                                });
-                              } else {
-                                this.scores.push({
-                                  placed: lastPlaced,
-                                  score: x.normalizedScore,
-                                  maxScore: x.maxScore,
-                                });
-                              }
-                            });
-                          }
-                          this.loading = false;
-                        },
-                        error: () => {
-                          this.loading = false;
-                        },
+                      teamData.forEach((x) => {
+                        if (x.maxScore > max) max = x.maxScore;
                       });
-                  } else {
-                    this.toastService.addToast(
-                      ToastType.error,
-                      'Something went wrong'
-                    );
-                    this.router.navigate([UrlConstants.home]);
-                  }
-                },
-              });
+
+                      teamData.forEach((x) => {
+                        this.teamScores.push({
+                          team: x.team,
+                          score: x.score,
+                          maxScore: x.maxScore,
+                          normalizedScore: this.normalize(x.score, max, 0),
+                        });
+                      });
+
+                      this.teamScores.sort((a, b): number => {
+                        return a.normalizedScore === b.normalizedScore
+                          ? 0
+                          : a.normalizedScore > b.normalizedScore
+                          ? -1
+                          : 1;
+                      });
+
+                      let lastPlaced = 1;
+                      this.teamScores.forEach((x, i) => {
+                        if (i > 0) {
+                          if (x.normalizedScore !== this.scores[i - 1].score) {
+                            lastPlaced++;
+                          }
+                          this.scores.push({
+                            placed: lastPlaced,
+                            score: x.normalizedScore,
+                            maxScore: x.maxScore,
+                          });
+                        } else {
+                          this.scores.push({
+                            placed: lastPlaced,
+                            score: x.normalizedScore,
+                            maxScore: x.maxScore,
+                          });
+                        }
+                      });
+                    }
+                    this.loading = false;
+                  },
+                  error: () => {
+                    this.loading = false;
+                  },
+                });
             } else {
               this.router.navigate([UrlConstants.home]);
             }

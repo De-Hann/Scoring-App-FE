@@ -1,18 +1,24 @@
 <div class="container" *ngIf="!loading">
   <div class="header">
-    <h1>Login</h1>
+    <img src="../../../assets/logo.svg" alt="" />
   </div>
+
+  <div class="sub-header">
+    <h1>Let the judgement begin</h1>
+    <p>
+      Join us below by rating the Rabbits as they find thier way through
+      breweing and food.
+    </p>
+  </div>
+
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
     <div class="input-fields">
       <div class="row">
         <div class="p-inputgroup">
-          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-          <input
-            type="text"
-            pInputText
-            placeholder="Username"
-            formControlName="username"
-          />
+          <span class="p-float-label">
+            <input type="text" pInputText formControlName="username" />
+            <label class="float-input" for="float-input">Username</label>
+          </span>
         </div>
         <div
           class="error-text"
@@ -26,13 +32,10 @@
       </div>
       <div class="row">
         <div class="p-inputgroup">
-          <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
-          <input
-            type="password"
-            pInputText
-            placeholder="Password"
-            formControlName="password"
-          />
+          <span class="p-float-label">
+            <input type="password" pInputText formControlName="password" />
+            <label class="float-input" for="float-input">Password</label>
+          </span>
         </div>
         <div
           class="error-text"

@@ -2,11 +2,8 @@ import { UrlConstants } from './../../constants';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Activity } from 'src/app/models/activity';
-import { Team } from 'src/app/models/team';
 import { ActivityService } from 'src/app/service/activity.service';
-import { EventService } from 'src/app/service/event.service';
 import { TeamService } from 'src/app/service/team.service';
-import { Event } from 'src/app/models/event';
 import { ToastService, ToastType } from 'src/app/service/toast.service';
 import { ScoreService } from 'src/app/service/score.service';
 import { AppState } from 'src/app/store';
@@ -19,12 +16,10 @@ import { TeamScores } from 'src/app/models/teamScores';
   selector: 'app-teams',
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.scss'],
-  providers: [EventService],
 })
 export class TeamsComponent implements OnInit {
   userId!: string;
   loading: boolean = true;
-  currentEvent!: Event;
   currentActivity!: Activity;
   teamScores: TeamScores[] = [];
   newScores: { teamId: string; score: number }[] = [];
@@ -34,7 +29,6 @@ export class TeamsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private eventService: EventService,
     private activityService: ActivityService,
     private teamService: TeamService,
     private scoreService: ScoreService,
@@ -61,34 +55,21 @@ export class TeamsComponent implements OnInit {
             if (activity) {
               this.currentActivity = activity;
 
-              this.eventService.getEventById(activity.eventId).subscribe({
-                next: (event) => {
-                  if (event) {
-                    this.backUrl = UrlConstants.viewEvent + '/' + event.id;
-                    this.currentEvent = event;
+              this.backUrl = UrlConstants.home;
 
-                    this.teamService
-                      .getTeamScoresByActivity(this.userId, activity.id)
-                      .subscribe({
-                        next: (teamData) => {
-                          if (teamData) {
-                            this.teamScores = teamData;
-                          }
-                          this.loading = false;
-                        },
-                        error: () => {
-                          this.loading = false;
-                        },
-                      });
-                  } else {
-                    this.toastService.addToast(
-                      ToastType.error,
-                      'Something went wrong'
-                    );
-                    this.router.navigate([UrlConstants.home]);
-                  }
-                },
-              });
+              this.teamService
+                .getTeamScoresByActivity(this.userId, activity.id)
+                .subscribe({
+                  next: (teamData) => {
+                    if (teamData) {
+                      this.teamScores = teamData;
+                    }
+                    this.loading = false;
+                  },
+                  error: () => {
+                    this.loading = false;
+                  },
+                });
             } else {
               this.router.navigate([UrlConstants.home]);
             }

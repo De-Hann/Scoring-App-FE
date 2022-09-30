@@ -12,12 +12,8 @@ export class ActivityService {
 
   constructor(private http: HttpClient) {}
 
-  getActivities(eventId: string): Observable<Activity[]> {
-    return this.http
-      .get<Activity[]>(this.url + 'GetByEventId', {
-        params: new HttpParams().set('eventId', eventId),
-      })
-      .pipe(take(1));
+  getActivities(): Observable<Activity[]> {
+    return this.http.get<Activity[]>(this.url + 'GetAll').pipe(take(1));
   }
 
   public getActivityById(id: string): Observable<Activity> {
