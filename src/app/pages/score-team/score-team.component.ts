@@ -38,9 +38,8 @@ export class ScoreTeamComponent implements OnInit {
     const teamId = this.route.snapshot.paramMap.get('teamId') || "";
     this.teamService.getTeamById(teamId).pipe(take(1)).subscribe((team) =>  {
       this.team = team;
-      this.categoryService.getCategoriesByActivityId(this.team.activityId).pipe(take(1)).subscribe((data) =>  {
+      this.categoryService.getCategoriesByTeamId(this.team.id).pipe(take(1)).subscribe((data) =>  {
         this.categories = data;
-        console.log(data)
       })
     });
     this.store.select('auth')
@@ -70,10 +69,8 @@ export class ScoreTeamComponent implements OnInit {
         score: d.value
     })));
 
-    console.log(prepared);
 
      this.scoreService.updateScores(prepared).subscribe((data => {
-      console.log("success");
      }));
   }
 

@@ -6,7 +6,7 @@
 
   <ng-container *ngIf="categories != null && categories.length > 0; else noData">
     <div class="scores">
-      <app-score-card *ngFor="let cat of categories" (starSelect)="starSelected($event)"></app-score-card>
+      <app-score-card *ngFor="let cat of categories" (starSelect)="starSelected($event)" [category]="cat"></app-score-card>
     </div>
   </ng-container>
 

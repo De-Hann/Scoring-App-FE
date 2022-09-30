@@ -11,9 +11,9 @@ export class CategoryService {
   private url: string = environment.api + 'Category/';
   constructor(private http: HttpClient) {}
 
-  public getCategoriesByActivityId(activityId: string): Observable<Category[]> {
+  public getCategoriesByTeamId(activityId: string): Observable<Category[]> {
     const params = new HttpParams().set('id', activityId);
-    return this.http.get<Category[]>(this.url + 'GetCategoriesByActivityId', {
+    return this.http.get<Category[]>(this.url + 'GetCategoriesByTeamId', {
       params
     });
   }
