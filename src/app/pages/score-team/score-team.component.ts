@@ -10,6 +10,7 @@ import { Team } from 'src/app/models/team';
 import { CategoryService } from 'src/app/service/category.service';
 import { ScoreService } from 'src/app/service/score.service';
 import { TeamService } from 'src/app/service/team.service';
+import { ToastService, ToastType } from 'src/app/service/toast.service';
 import { AppState } from 'src/app/store';
 
 @Component({
@@ -31,7 +32,8 @@ export class ScoreTeamComponent implements OnInit {
     private teamService: TeamService,
     private categoryService: CategoryService,
     private scoreService: ScoreService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -84,6 +86,16 @@ export class ScoreTeamComponent implements OnInit {
       }))
     );
 
-    this.scoreService.updateScores(prepared).subscribe((data) => {});
+    this.scoreService.updateScores(prepared).subscribe((data) => {
+      this.toastService.addToast(
+        ToastType.success,
+        'Score updated successfully'
+      )
+    }, (err) => {
+      this.toastService.addToast(
+        ToastType.error,
+        'Something went wrong, couldnt update score'
+      )
+    });
   }
 }
