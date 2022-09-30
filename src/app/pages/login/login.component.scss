@@ -22,6 +22,10 @@
         height: 60px;
       }
     }
+    .sub-header {
+      width: calc(100vw - 30px);
+      max-width: 330px;
+    }
     .login-form {
       display: flex;
       flex-direction: column;
