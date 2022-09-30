@@ -83,9 +83,25 @@ h6 {
   color: #7fbe38;
 }
 
+.p-toast,
+.p-toast-title,
+.p-toast-summary,
+.p-toast-icon,
+.p-toast-icon-close,
+.p-toast-message {
+  color: #000 !important;
+}
+
 body {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  background-image: url(./assets/background.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center bottom;
   #content {
     margin: 0px;
     width: 100vw;
