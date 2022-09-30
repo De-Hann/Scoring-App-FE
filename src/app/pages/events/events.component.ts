@@ -55,4 +55,8 @@ export class EventsComponent implements OnInit {
   logout() {
     this.router.navigate([UrlConstants.logout]);
   }
+
+  navigateToLeaderboard() {
+    this.router.navigate([UrlConstants.leaderboard]);
+  }
 }

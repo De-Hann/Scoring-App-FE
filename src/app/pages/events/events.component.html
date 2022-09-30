@@ -1,14 +1,18 @@
 <div class="container">
   <div class="header">
-    <h1>Scoring App</h1>
     <div class="controls" [class.user]="!isAdmin">
       <button
         pButton
-        class="btn btn-primary logout"
+        class="p-button-rounded"
         type="button"
-        label="Logout"
+        pRipple
+        icon="pi pi-sign-out"
         (click)="logout()"
       ></button>
+      <h1>Product</h1>
+      <div class="leaderboard-icon" (click)="navigateToLeaderboard()">
+        <div class="icon"></div>
+      </div>
       <button
         *ngIf="isAdmin"
         pButton

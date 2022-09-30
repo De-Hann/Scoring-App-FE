@@ -11,6 +11,7 @@ import { CreateEventComponent } from './pages/create-event/create-event.componen
 import { CreateActivityComponent } from './pages/create-activity/create-activity.component';
 import { CreateTeamComponent } from './pages/create-team/create-team.component';
 import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,11 @@ const routes: Routes = [
     path: UrlConstants.createEvent,
     canActivate: [AuthGuard],
     component: CreateEventComponent,
+  },
+  {
+    path: UrlConstants.leaderboard,
+    canActivate: [AuthGuard],
+    component: LeaderboardComponent,
   },
   {
     path: UrlConstants.editEvent + '/:id',
