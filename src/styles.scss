@@ -6,7 +6,7 @@
   --box-shadow: 0;
   --inset-box-shadow: inset 0px 0px 10px 0px rgb(0 0 0 / 32%);
 
-  font-family: "Poppins", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1,
@@ -15,7 +15,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Avenir", sans-serif;
 }
 
 .p-button {
@@ -27,7 +27,15 @@ body {
   margin: 0;
   padding: 0;
   #content {
-    margin: 10px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    background-image: url(./assets/background.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
+
     #main-content {
       margin: 10px;
       .btn {
