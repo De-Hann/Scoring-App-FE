@@ -4,7 +4,6 @@
   }
   ::ng-deep {
     .controls {
-      margin: 10px 0px;
       display: flex;
       flex-direction: row;
       flex-wrap: nowrap;
@@ -12,25 +11,41 @@
       justify-content: space-between;
       align-items: center;
     }
-    .teams {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-content: flex-start;
-      justify-content: flex-start;
-      align-items: flex-start;
-      .team-section {
+    .teams-container {
+      padding: 10px;
+      .header {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 28px;
+      }
+      .sub-header {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+      }
+      .teams {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: nowrap;
         align-content: flex-start;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
-        width: 100%;
-        .team-card {
-        }
-        .team-details {
-          margin-left: 20px;
+        .team-section {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          .team-card {
+            margin: 5px;
+          }
+          .team-details {
+            margin-left: 20px;
+          }
         }
       }
     }

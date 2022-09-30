@@ -15,15 +15,9 @@ export class TeamCardComponent {
   @Input() myScore: number = 0;
   @Input() scorable: boolean = true;
 
-  @Output() score: EventEmitter<{ id: string; score: number }> =
-    new EventEmitter<{ id: string; score: number }>();
-  @Output() edit: EventEmitter<string> = new EventEmitter<string>();
+  @Output() score: EventEmitter<string> = new EventEmitter<string>();
 
-  clickEdit() {
-    this.edit.emit(this.id);
-  }
-
-  clickScore(e: any) {
-    this.score.emit({ id: this.id, score: this.myScore ? this.myScore : 0 });
+  clickEvent() {
+    this.score.emit(this.id);
   }
 }

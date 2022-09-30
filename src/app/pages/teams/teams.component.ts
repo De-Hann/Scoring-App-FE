@@ -84,66 +84,63 @@ export class TeamsComponent implements OnInit {
   ngOnInit(): void {}
 
   scoreTeam($event: any) {
-    const id = this.newScores.findIndex((x) => {
-      x.teamId === $event.id;
-    });
-    if (id !== -1) {
-      this.newScores[id] = $event.score;
-    } else {
-      this.newScores.push({ teamId: $event.id, score: $event.score });
-    }
+    this.router.navigate([UrlConstants.score_team + '/' + $event]);
+    // const id = this.newScores.findIndex((x) => {
+    //   x.teamId === $event.id;
+    // });
+    // if (id !== -1) {
+    //   this.newScores[id] = $event.score;
+    // } else {
+    //   this.newScores.push({ teamId: $event.id, score: $event.score });
+    // }
   }
 
-  updateScores() {
-    const models: UpdateScoreRequest[] = [];
+  // updateScores() {
+  //   const models: UpdateScoreRequest[] = [];
 
-    this.newScores.forEach((score) => {
-      models.push({
-        userId: this.userId,
-        teamId: score.teamId,
-        score: score.score,
-      });
-    });
+  //   this.newScores.forEach((score) => {
+  //     models.push({
+  //       userId: this.userId,
+  //       teamId: score.teamId,
+  //       score: score.score,
+  //     });
+  //   });
 
-    this.scoreService
-      .updateScores(models)
-      .pipe(take(1))
-      .subscribe({
-        next: (res) => {
-          this.toastService.addToast(
-            ToastType.success,
-            'Scores successfully updated'
-          );
+  //   this.scoreService
+  //     .updateScores(models)
+  //     .pipe(take(1))
+  //     .subscribe({
+  //       next: (res) => {
+  //         this.toastService.addToast(
+  //           ToastType.success,
+  //           'Scores successfully updated'
+  //         );
 
-          this.newScores.forEach((score) => {
-            const index = this.teamScores.findIndex(
-              (x) => x.team.id === score.teamId
-            );
+  //         this.newScores.forEach((score) => {
+  //           const index = this.teamScores.findIndex(
+  //             (x) => x.team.id === score.teamId
+  //           );
 
-            if (index > -1) {
-              if (this.teamScores[index].myScore !== 0) {
-                this.teamScores[index].score -=
-                  this.teamScores[index].myScore - score.score;
-                this.teamScores[index].myScore = score.score;
-              } else {
-                this.teamScores[index].maxScore += 10;
-                this.teamScores[index].score += score.score;
-                this.teamScores[index].myScore = score.score;
-              }
-            }
-          });
+  //           if (index > -1) {
+  //             if (this.teamScores[index].myScore !== 0) {
+  //               this.teamScores[index].score -=
+  //                 this.teamScores[index].myScore - score.score;
+  //               this.teamScores[index].myScore = score.score;
+  //             } else {
+  //               this.teamScores[index].maxScore += 10;
+  //               this.teamScores[index].score += score.score;
+  //               this.teamScores[index].myScore = score.score;
+  //             }
+  //           }
+  //         });
 
-          this.clear();
-        },
-        error: () => {
-          this.toastService.addToast(ToastType.error, 'Could not update score');
-        },
-      });
-  }
-
-  clear() {
-    this.newScores = [];
-  }
+  //         this.clear();
+  //       },
+  //       error: () => {
+  //         this.toastService.addToast(ToastType.error, 'Could not update score');
+  //       },
+  //     });
+  // }
 
   navigateToCreate() {
     this.router.navigate([
@@ -154,12 +151,6 @@ export class TeamsComponent implements OnInit {
   navigateToCalc() {
     this.router.navigate([
       UrlConstants.calculate_scores + '/' + this.currentActivity.id,
-    ]);
-  }
-
-  editTeam(id: string) {
-    this.router.navigate([
-      UrlConstants.editTeam + '/' + this.currentActivity.id + '/' + id,
     ]);
   }
 }
