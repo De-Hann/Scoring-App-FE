@@ -19,7 +19,6 @@ export class ScoreCardComponent implements OnInit {
   }
 
   onStarSelect(val: number) {
-    console.log(this.category);
     this.starSelect.emit({value: val, catId: this.category?.categoryId});
   }
 
