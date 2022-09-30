@@ -1,30 +1,37 @@
 <div class="container">
   <div class="header">
     <h1>Scoring App</h1>
-    <div class="controls">
+    <div class="controls" [class.user]="!isAdmin">
       <button
+        pButton
+        class="btn btn-primary logout"
+        type="button"
+        label="Logout"
+        (click)="logout()"
+      ></button>
+      <button
+        *ngIf="isAdmin"
         pButton
         class="btn btn-primary"
         type="button"
         label="Add Event"
         icon="pi pi-plus"
+        (click)="navigateToCreateEvent()"
       ></button>
     </div>
   </div>
   <p>Please select an event below</p>
-  <p-tabView class="events-tabview">
-    <p-tabPanel header="Upcoming Events">
-      <app-spinner *ngIf="loading"></app-spinner>
-      <div class="upcoming-events" *ngIf="!loading">
-        <app-small-card
-          *ngFor="let event of events"
-          class="event-card"
-          (click)="navigateToEvent(event.id)"
-          [label]="event.name"
-          [imgUrl]="event.imgUrl"
-        ></app-small-card>
-      </div>
-    </p-tabPanel>
-    <p-tabPanel header="Old Events"> Content 2 </p-tabPanel>
-  </p-tabView>
+  <app-spinner *ngIf="loading"></app-spinner>
+  <div class="upcoming-events" *ngIf="!loading">
+    <app-small-card
+      *ngFor="let event of events"
+      class="event-card"
+      (view)="navigateToEvent(event.id)"
+      (edit)="editEvent(event.id)"
+      [id]="event.id"
+      [label]="event.name"
+      [imgUrl]="event.imgUrl"
+      [editable]="isAdmin"
+    ></app-small-card>
+  </div>
 </div>

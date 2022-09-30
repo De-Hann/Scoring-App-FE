@@ -1,1 +1,58 @@
-<p>teams works!</p>
+<div class="container" [class.edited]="newScores.length > 0" *ngIf="!loading">
+  <app-navigation
+    label="{{ currentEvent?.name + ' - ' + currentActivity?.name }}"
+    [backUrl]="backUrl"
+  ></app-navigation>
+  <app-banner
+    *ngIf="currentActivity?.imgUrl !== ''"
+    imgUrl="{{ currentActivity?.imgUrl }}"
+  ></app-banner>
+
+  <div class="controls" *ngIf="isAdmin">
+    <button
+      pButton
+      class="btn btn-secondary"
+      type="button"
+      label="Calculate Scores"
+      (click)="navigateToCalc()"
+    ></button>
+    <button
+      pButton
+      class="btn btn-primary"
+      type="button"
+      label="Add Team"
+      icon="pi pi-plus"
+      (click)="navigateToCreate()"
+    ></button>
+  </div>
+
+  <div *ngIf="teamScores.length > 0">
+    <p>Please score teams below</p>
+
+    <div class="teams">
+      <div
+        class="team-section"
+        *ngFor="let teamScore of teamScores; let i = index"
+      >
+        <app-team-card
+          [id]="teamScore.team.id"
+          [label]="teamScore.team.name"
+          [imgUrl]="teamScore.team.imgUrl"
+          [editable]="isAdmin"
+          [maxScore]="teamScore.myScore > 0 ? 10 : 0"
+          [totalScore]="teamScore.myScore"
+          [myScore]="teamScore.myScore"
+          class="team-card"
+          (score)="scoreTeam($event)"
+          (edit)="editTeam(teamScore.team.id)"
+        ></app-team-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="teamScores.length <= 0">
+    <p>No Teams added</p>
+  </div>
+  <div *ngIf="newScores.length > 0" class="update">
+    <app-update-footer (update)="updateScores()"></app-update-footer>
+  </div>
+</div>

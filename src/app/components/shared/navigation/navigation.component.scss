@@ -1,4 +1,4 @@
-.navigation {
+#navigation {
   ::ng-deep {
     .controls {
       display: flex;
@@ -8,7 +8,8 @@
       justify-content: flex-start;
       align-items: center;
       button {
-        background-color: #fff;
+        background-color: #fff !important;
+        border: none !important;
         border: none;
         box-shadow: none;
         transition: var(--animation-time);

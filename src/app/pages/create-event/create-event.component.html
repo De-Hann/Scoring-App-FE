@@ -1,0 +1,93 @@
+<div class="container create-event">
+  <app-navigation
+    [backUrl]="backUrl"
+    *ngIf="!editing"
+    label="Create Event"
+  ></app-navigation>
+  <app-navigation
+    [backUrl]="backUrl"
+    *ngIf="editing"
+    label="Edit Event"
+  ></app-navigation>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <form
+    class="create-event-form"
+    [formGroup]="createEventForm"
+    *ngIf="!loading"
+  >
+    <div class="inputs">
+      <div class="row">
+        <div class="group">
+          <label for="eventName">Event Name: </label>
+          <input
+            type="text"
+            pInputText
+            inputId="eventName"
+            formControlName="name"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="group">
+          <label for="touchuiStart">Start Date</label>
+          <p-calendar
+            formControlName="dateStart"
+            [(ngModel)]="dateStart"
+            [touchUI]="true"
+            [showTime]="true"
+            [hourFormat]="'12'"
+            [readonlyInput]="true"
+            inputId="touchuiStart"
+            [minDate]="minDateStart"
+            (onSelect)="updateMinEndDate()"
+          ></p-calendar>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="group">
+          <label for="touchuiEnd">End Date</label>
+          <p-calendar
+            [disabled]="
+              createEventForm.get('dateStart')?.invalid ? true : false
+            "
+            formControlName="dateEnd"
+            [(ngModel)]="dateEnd"
+            [touchUI]="true"
+            [showTime]="true"
+            [hourFormat]="'12'"
+            [readonlyInput]="true"
+            inputId="touchuiEnd"
+            [minDate]="minDateEnd"
+          ></p-calendar>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="row bottom">
+        <button
+          *ngIf="editing"
+          [disabled]="createEventForm.invalid"
+          pButton
+          class="btn btn-primary"
+          type="button"
+          label="Edit Event"
+          (click)="Submit()"
+        ></button>
+        <button
+          *ngIf="!editing"
+          [disabled]="createEventForm.invalid"
+          pButton
+          class="btn btn-primary"
+          type="button"
+          label="Create Event"
+          (click)="Submit()"
+        ></button>
+      </div>
+    </div>
+  </form>
+</div>

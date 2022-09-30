@@ -1,0 +1,39 @@
+.container.create-event {
+  height: calc(100vh - 100px);
+
+  form.create-event-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+
+      padding: 10px;
+
+      .group {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        flex-wrap: nowrap;
+        flex-direction: row;
+
+        label {
+          margin: 0px 10px;
+        }
+      }
+    }
+  }
+}

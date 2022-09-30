@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-team-card',
   templateUrl: './team-card.component.html',
-  styleUrls: ['./team-card.component.scss']
+  styleUrls: ['./team-card.component.scss'],
 })
-export class TeamCardComponent implements OnInit {
+export class TeamCardComponent {
+  @Input() id: string = '';
+  @Input() label: string = '';
+  @Input() imgUrl: string = '';
+  @Input() editable: boolean = false;
+  @Input() totalScore: number = 0;
+  @Input() maxScore: number = 0;
+  @Input() myScore: number = 0;
+  @Input() scorable: boolean = true;
 
-  constructor() { }
+  @Output() score: EventEmitter<{ id: string; score: number }> =
+    new EventEmitter<{ id: string; score: number }>();
+  @Output() edit: EventEmitter<string> = new EventEmitter<string>();
 
-  ngOnInit(): void {
+  clickEdit() {
+    this.edit.emit(this.id);
   }
 
+  clickScore(e: any) {
+    this.score.emit({ id: this.id, score: this.myScore ? this.myScore : 0 });
+  }
 }

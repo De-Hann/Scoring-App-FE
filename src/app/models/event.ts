@@ -5,3 +5,10 @@ export interface Event {
   name: string;
   imgUrl: string;
 }
+
+export interface CreateEvent {
+  dateStart: string;
+  dateEnd: string;
+  name: string;
+  imgUrl: string;
+}

@@ -8,12 +8,17 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
   @Input() label: string = '';
+  @Input() backUrl: string | undefined;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   back() {
-    this.router.navigate(['..']);
+    if (this.backUrl === undefined) {
+      console.error('Back Url is not defined!');
+      return;
+    }
+    this.router.navigate([this.backUrl]);
   }
 }

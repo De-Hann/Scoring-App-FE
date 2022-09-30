@@ -1,28 +1,54 @@
-<div class="container">
-  <app-navigation label="{{ currentEvent?.name }}"></app-navigation>
-  <app-banner imgUrl="{{ currentEvent?.imgUrl }}"></app-banner>
+<div class="container" *ngIf="!loading">
+  <app-navigation
+    label="{{ currentEvent?.name }}"
+    [backUrl]="backUrl"
+  ></app-navigation>
+  <app-banner
+    *ngIf="currentEvent?.imgUrl !== ''"
+    imgUrl="{{ currentEvent?.imgUrl }}"
+  ></app-banner>
 
-  <div class="controls">
+  <div class="controls" *ngIf="isAdmin">
     <button
       pButton
       class="btn btn-primary"
       type="button"
-      label="Edit Event"
+      label="Add Activity"
       icon="pi pi-plus"
+      (click)="navigateToCreate()"
     ></button>
   </div>
-  <p>Please select an activity below</p>
+  <div *ngIf="this.activities.length > 0">
+    <p>Please select an activity below</p>
 
-  <!-- TODO: CONTINUE HERE, Wrap component with extra details about activity -->
-  <div class="activities">
-    <div class="activity-section">
-      <app-small-card
-        [label]="'Activity'"
-        [imgUrl]="
-          'https://media.distractify.com/brand-img/IPJP2rGdp/0x0/walterthedog-1592229773475.jpg'
-        "
-        class=""
-      ></app-small-card>
+    <div class="activities" *ngIf="!loading">
+      <div
+        class="activity-section"
+        *ngFor="let activity of activities; let i = index"
+      >
+        <app-small-card
+          [label]="activity.name"
+          [imgUrl]="activity.imgUrl"
+          class="activity-card"
+          [editable]="isAdmin"
+          (view)="navigateToActivity(activity.id)"
+          (edit)="editActivity(activity.id)"
+        ></app-small-card>
+        <div
+          class="activity-details"
+          *ngIf="teamData.length > 0 && teamData[i]"
+        >
+          <p>Teams: {{ teamData[i].teams.length }}</p>
+        </div>
+      </div>
     </div>
+  </div>
+  <div *ngIf="this.activities.length <= 0">
+    <p>No Activities found</p>
+  </div>
+</div>
+<div class="container" *ngIf="loading">
+  <div class="loader">
+    <app-spinner></app-spinner>
   </div>
 </div>
