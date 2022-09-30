@@ -21,4 +21,8 @@ export class LeaderboardComponent implements OnInit {
     this.activities$ = this.activityService.getActivityByEventId("5de2619e-7808-4935-9853-56d1adb0d8b2");
   }
 
+  getActvityScores(activity: Activity) {
+    console.log(activity);
+  }
+
 }

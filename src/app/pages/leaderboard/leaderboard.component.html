@@ -1,6 +1,6 @@
 <app-navigation [backUrl]="backUrl" label="Leaderboard"></app-navigation>
 
-<p-tabView *ngIf="activities$ | async as activities">
+<p-tabView *ngIf="activities$ | async as activities" (onChange)="getActvityScores(activities[$event.index])">
   <p-tabPanel *ngFor="let item of activities">
     <ng-template pTemplate="header" >
       <div class="leaderboard-tab">
@@ -11,5 +11,19 @@
         <div class="lb-name">{{item.name}}</div>
       </div>
     </ng-template>
+      
+    <div class="leaderboard-table">
+      <div class="row" >
+        <div class="rank"><span>1</span></div>
+        <div class="team">
+          <span class="team-name">Fast Food</span>
+          <span class="team-cat">The team</span>
+        </div>
+        <div class="score">
+          <div>7/10</div>
+          <span>Score</span>
+        </div>
+      </div>
+    </div>
   </p-tabPanel>
 </p-tabView>
