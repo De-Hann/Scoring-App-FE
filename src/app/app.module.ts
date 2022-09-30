@@ -30,6 +30,7 @@ import { CreateTeamComponent } from './pages/create-team/create-team.component';
 import { UpdateFooterComponent } from './components/team/update-footer/update-footer.component';
 import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
+import { stringContains } from './pipes/stringContains.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,7 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
     SmallCardComponent,
     LoginComponent,
     LogoutComponent,
-
+    stringContains,
     CreateActivityComponent,
     CreateTeamComponent,
     UpdateFooterComponent,

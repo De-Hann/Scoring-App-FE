@@ -1,10 +1,15 @@
 <app-navigation [backUrl]="backUrl" label="Leaderboard"></app-navigation>
 
-<p-tabView>
-  <p-tabPanel header="Header 1">
-     Content 1
-  </p-tabPanel>
-  <p-tabPanel header="Header 2">
-      Content 2
+<p-tabView *ngIf="activities$ | async as activities">
+  <p-tabPanel *ngFor="let item of activities">
+    <ng-template pTemplate="header" >
+      <div class="leaderboard-tab">
+        <div class="lb-icon">
+          <div *ngIf="item.name | stringContains: 'beer'" style="background: url('/assets/Beer.svg'); width: 40px; height: 40px;"> </div>
+          <div *ngIf="item.name | stringContains: 'potjie'" style="background: url('/assets/Potjie.svg'); width: 40px; height: 40px;"> </div>
+        </div>
+        <div class="lb-name">{{item.name}}</div>
+      </div>
+    </ng-template>
   </p-tabPanel>
 </p-tabView>

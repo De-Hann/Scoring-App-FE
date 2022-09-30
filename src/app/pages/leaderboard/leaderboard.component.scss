@@ -1,0 +1,16 @@
+.leaderboard-tab {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .lb-icon {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .lb-name {
+    text-align: center;
+  }
+}

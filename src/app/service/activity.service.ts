@@ -24,6 +24,13 @@ export class ActivityService {
       .pipe(take(1));
   }
 
+  public getActivityByEventId(id: string): Observable<Activity[]> {
+    return this.http
+      .get<Activity[]>(this.url + 'GetByEventId', {
+        params: new HttpParams().set('eventId', id),
+      });
+  }
+
   public createActivity(model: CreateActivity): Observable<Activity> {
     return this.http.post<Activity>(this.url + 'Create', {
       ...model,
