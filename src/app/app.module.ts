@@ -31,6 +31,7 @@ import { CreateActivityComponent } from './pages/create-activity/create-activity
 import { CreateTeamComponent } from './pages/create-team/create-team.component';
 import { UpdateFooterComponent } from './components/team/update-footer/update-footer.component';
 import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
+import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
     CreateTeamComponent,
     UpdateFooterComponent,
     CalcScoreComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule,
