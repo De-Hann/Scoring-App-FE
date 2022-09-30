@@ -46,5 +46,11 @@
     justify-content: center;
     display: flex;
     align-items: center;
+
+    ::ng-deep {
+      .p-rating-cancel {
+        display: none !important;
+      }
+    }
   }
 }
