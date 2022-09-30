@@ -1,9 +1,10 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Activity, CreateActivity } from '../models/activity';
 import { take } from 'rxjs/operators';
+import { LeaderBoardScore } from '../models/score';
 @Injectable({
   providedIn: 'root',
 })

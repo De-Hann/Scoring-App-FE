@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { UrlConstants } from 'src/app/constants';
 import { Activity } from 'src/app/models/activity';
+import { LeaderBoardScore } from 'src/app/models/score';
 import {ActivityService} from 'src/app/service/activity.service';
+import { ScoreService } from 'src/app/service/score.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -12,17 +15,27 @@ import {ActivityService} from 'src/app/service/activity.service';
 export class LeaderboardComponent implements OnInit {
 
   backUrl: string = "";
-  activities$: Observable<Activity[]> = new Observable<Activity[]>();
-  constructor(private activityService: ActivityService) {
+  activities: Activity[] = [];
+  score$: Observable<LeaderBoardScore[]> | null | undefined = new Observable<LeaderBoardScore[]>();
+  load: boolean = false;
+  constructor(private activityService: ActivityService, private scoreService: ScoreService) {
     this.backUrl = UrlConstants.home;
   }
 
   ngOnInit(): void {
-    this.activities$ = this.activityService.getActivityByEventId("5de2619e-7808-4935-9853-56d1adb0d8b2");
+    this.load = true;
+    this.activityService.getActivities().pipe(take(1)).subscribe((data: Activity[]) => {
+      this.load = false;
+      if (data.length > 0) {
+        this.activities = data;
+        this.getActvityScores(this.activities[0]);
+      }
+    });
   }
 
   getActvityScores(activity: Activity) {
-    console.log(activity);
+    this.score$ = null;
+    setTimeout(() => this.score$ = this.scoreService.getActivityScore(activity.id), 300000);
   }
 
 }
