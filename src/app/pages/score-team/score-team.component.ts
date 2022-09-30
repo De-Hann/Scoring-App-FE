@@ -20,7 +20,6 @@ export class ScoreTeamComponent implements OnInit {
   ngOnInit(): void {
     const teamId = this.route.snapshot.paramMap.get('teamId') || "";
     this.teamService.getTeamById(teamId).pipe(take(1)).subscribe((activity) =>  {
-      console.log(activity);
       this.activity = activity;
     })
 
