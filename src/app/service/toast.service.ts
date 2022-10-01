@@ -10,6 +10,7 @@ export class ToastService {
       summary: summary === null ? type + '!' : summary,
       detail: message,
       severity: type.toLowerCase(),
+      life: 1000,
     });
   }
 }
