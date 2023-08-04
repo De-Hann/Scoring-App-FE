@@ -1,6 +1,6 @@
 <div class="container" [class.edited]="newScores.length > 0" *ngIf="!loading">
   <app-navigation
-    label="{{currentActivity?.name}}"
+    label="{{ currentActivity?.name }}"
     [backUrl]="backUrl"
   ></app-navigation>
   <div class="controls" *ngIf="isAdmin">
@@ -15,8 +15,8 @@
   </div>
 
   <div class="teams-container">
-    <h3 class="header">The Brewers</h3>
-    <p class="sub-header">Please score breweing team below</p>
+    <h3 class="header">The Teams</h3>
+    <p class="sub-header">Please score a team below</p>
 
     <div class="teams" *ngIf="teamScores.length > 0">
       <div class="team-section">
@@ -26,7 +26,7 @@
           [label]="teamScore.team.name"
           [imgUrl]="teamScore.team.imgUrl"
           [scored]="teamScore.scored"
-          [categories]="teamScore.categories"
+          [activities]="teamScore.categories"
           class="team-card"
           (score)="scoreTeam($event)"
         ></app-team-card>

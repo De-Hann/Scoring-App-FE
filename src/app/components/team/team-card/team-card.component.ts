@@ -10,7 +10,7 @@ export class TeamCardComponent {
   @Input() label: string = '';
   @Input() imgUrl: string = '';
   @Input() scored: number = 0;
-  @Input() categories: number = 0;
+  @Input() activities: number = 0;
 
   @Output() score: EventEmitter<string> = new EventEmitter<string>();
 

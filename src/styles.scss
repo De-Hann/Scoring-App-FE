@@ -30,7 +30,6 @@ h6 {
   background: none;
 }
 
-
 .p-tabview .p-tabview-nav {
   background: none;
   border: 1px solid transparent;
@@ -46,7 +45,7 @@ h6 {
   }
   li.p-highlight .p-tabview-nav-link {
     background: none;
-    border-bottom: 5px solid #7FBE38;
+    border-bottom: 5px solid #7fbe38;
   }
 
   li .p-tabview-nav-link:not(.p-disabled):focus {
@@ -67,9 +66,42 @@ h6 {
   }
 }
 
+//rating
+.p-rating .p-rating-icon {
+  font-size: 32px;
+}
+
+.p-rating .p-rating-icon.pi-star-fill {
+  color: #7fbe38;
+}
+
+.p-rating .p-rating-icon:focus {
+  box-shadow: none;
+}
+
+.p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {
+  color: #7fbe38;
+}
+
+.p-toast,
+.p-toast-title,
+.p-toast-summary,
+.p-toast-icon,
+.p-toast-icon-close,
+.p-toast-message {
+  color: #000 !important;
+}
+
 body {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  background-image: url(./assets/background.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center bottom;
   #content {
     margin: 0px;
     width: 100vw;

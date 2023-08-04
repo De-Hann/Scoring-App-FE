@@ -9,7 +9,6 @@ import { LogoutComponent } from './pages/logout/logout.component';
 import { AuthGuard } from './service/auth.guard';
 import { CreateActivityComponent } from './pages/create-activity/create-activity.component';
 import { CreateTeamComponent } from './pages/create-team/create-team.component';
-import { CalcScoreComponent } from './pages/calc-score/calc-score.component';
 import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component';
 
 const routes: Routes = [

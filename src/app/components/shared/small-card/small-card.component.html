@@ -1,5 +1,9 @@
-<p-card class="small-card" [class.default]="imgUrl === ''">
-  <div (click)="clickEvent()" class="custom-content">
+<p-card
+  class="small-card"
+  [class.default]="imgUrl === ''"
+  (click)="clickEvent()"
+>
+  <div class="custom-content">
     <img *ngIf="imgUrl !== ''" src="{{ imgUrl }}" alt="" />
     <p>{{ label }}</p>
   </div>

@@ -9,7 +9,6 @@ import { ScoreService } from 'src/app/service/score.service';
 import { AppState } from 'src/app/store';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
-import { Score, UpdateScoreRequest } from 'src/app/models/score';
 import { TeamScores } from 'src/app/models/teamScores';
 
 @Component({
@@ -31,7 +30,6 @@ export class TeamsComponent implements OnInit {
     private router: Router,
     private activityService: ActivityService,
     private teamService: TeamService,
-    private scoreService: ScoreService,
     private toastService: ToastService,
     private store: Store<AppState>
   ) {
@@ -86,14 +84,6 @@ export class TeamsComponent implements OnInit {
 
   scoreTeam($event: any) {
     this.router.navigate([UrlConstants.score_team + '/' + $event]);
-    // const id = this.newScores.findIndex((x) => {
-    //   x.teamId === $event.id;
-    // });
-    // if (id !== -1) {
-    //   this.newScores[id] = $event.score;
-    // } else {
-    //   this.newScores.push({ teamId: $event.id, score: $event.score });
-    // }
   }
 
   // updateScores() {
