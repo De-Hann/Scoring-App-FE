@@ -49,4 +49,49 @@
       <p>No Activities found</p>
     </div>
   </div>
+  <div class="controls">
+    <img
+      src="../../../assets/camera.svg"
+      alt=""
+      class="camera"
+      (click)="toggleWebcam()"
+    />
+  </div>
+  <div class="camera-controls">
+    <webcam
+      class="webcam"
+      [trigger]="triggerObservable"
+      (imageCapture)="handleImage($event)"
+      *ngIf="showWebcam"
+      [allowCameraSwitch]="allowCameraSwitch"
+      [switchCamera]="nextWebcamObservable"
+      [videoOptions]="videoOptions"
+      [imageQuality]="1"
+      (cameraSwitched)="cameraWasSwitched($event)"
+      (initError)="handleInitError($event)"
+    ></webcam>
+
+    <div id="reader" style="display: none"></div>
+  </div>
+  <div class="dialog">
+    <p-dialog
+      header="Booking information"
+      *ngIf="dialogContent"
+      [(visible)]="dialogVisible"
+      [style]="{ width: '90vw', height: '90vh' }"
+      [modal]="true"
+      [draggable]="false"
+      [resizable]="false"
+    >
+      <div>
+        <p>BookingId: {{ dialogContent.id }}</p>
+        <p>UserId: {{ dialogContent.user.id }}</p>
+        <p>Username: {{ dialogContent.user.username }}</p>
+        <p>
+          Role: {{ dialogContent.user.userType === 0 ? "General" : "Admin" }}
+        </p>
+        <p>No of peeps: {{ dialogContent.noOfPeople }}</p>
+      </div>
+    </p-dialog>
+  </div>
 </div>

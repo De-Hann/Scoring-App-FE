@@ -22,13 +22,28 @@
       }
     }
     .controls {
-      margin: 10px 0px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-content: center;
-      justify-content: flex-end;
-      align-items: center;
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      img.camera {
+        margin: 10px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+    .camera-controls {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      .webcam {
+        .webcam-wrapper {
+          background-color: #000;
+          video {
+            width: calc(100vw);
+            height: calc(90vh);
+          }
+        }
+      }
     }
     .activity-container {
       margin: 10px;

@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
 import { RatingModule } from 'primeng/rating';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   exports: [
@@ -26,6 +27,7 @@ import { RatingModule } from 'primeng/rating';
     ToastModule,
     CalendarModule,
     RatingModule,
+    DialogModule
   ],
 })
-export class PrimeModule {}
+export class PrimeModule { }

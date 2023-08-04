@@ -32,6 +32,7 @@ import { LeaderboardComponent } from './pages/leaderboard/leaderboard.component'
 import { stringContains } from './pipes/stringContains.pipe';
 import { ScoreCardComponent } from './components/team/score-card/score-card.component';
 import { ScoreTeamComponent } from './pages/score-team/score-team.component';
+import { WebcamModule } from 'ngx-webcam';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,8 +75,9 @@ import { ScoreTeamComponent } from './pages/score-team/score-team.component';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    WebcamModule
   ],
   providers: [httpInterceptorProviders, ToastService, MessageService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
