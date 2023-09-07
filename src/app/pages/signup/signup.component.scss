@@ -15,7 +15,7 @@
       align-content: center;
       justify-content: space-between;
       align-items: center;
-      margin: 115px 0px;
+      margin: 60px 0px 30px;
       img {
         width: calc(100vw - 30px);
         max-width: 330px;
@@ -26,7 +26,7 @@
       width: calc(100vw - 30px);
       max-width: 330px;
     }
-    .login-form {
+    .signup-form {
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
@@ -43,7 +43,7 @@
         align-items: flex-start;
 
         .p-inputgroup {
-          margin: 25px;
+          margin: 20px;
           width: auto;
           .float-input {
             color: #fff;
@@ -81,6 +81,10 @@
           font-size: 12px;
           margin-left: 25px;
           color: #f00;
+
+          &:last-child {
+            margin-bottom: 20px;
+          }
         }
       }
       .controls {

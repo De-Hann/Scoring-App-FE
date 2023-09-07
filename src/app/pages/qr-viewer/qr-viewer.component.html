@@ -1,0 +1,11 @@
+<div class="container" *ngIf="!loading">
+  <div class="nav">
+    <img src="../../../assets/logout.svg" alt="" (click)="logout()" />
+  </div>
+  <div class="qr-code">
+    <img [src]="qrData" alt="" />
+  </div>
+</div>
+<div class="loader" *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>

@@ -21,30 +21,7 @@
         height: 36px;
       }
     }
-    .controls {
-      position: fixed;
-      bottom: 0px;
-      right: 0px;
-      img.camera {
-        margin: 10px;
-        width: 36px;
-        height: 36px;
-      }
-    }
-    .camera-controls {
-      position: fixed;
-      top: 0px;
-      left: 0px;
-      .webcam {
-        .webcam-wrapper {
-          background-color: #000;
-          video {
-            width: calc(100vw);
-            height: calc(90vh);
-          }
-        }
-      }
-    }
+
     .activity-container {
       margin: 10px;
       .crest {
@@ -59,6 +36,11 @@
         align-content: center;
         justify-content: center;
         align-items: center;
+
+        .invert {
+          -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+          filter: invert(100%);
+        }
       }
       .activities {
         display: flex;
