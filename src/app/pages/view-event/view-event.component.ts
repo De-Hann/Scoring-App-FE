@@ -5,10 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Activity } from 'src/app/models/activity';
 import { Team } from 'src/app/models/team';
-import { ToastService, ToastType } from 'src/app/service/toast.service';
+import { ToastService } from 'src/app/service/toast.service';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 import { AppState } from 'src/app/store';
+import { BookingService } from 'src/app/service/booking.service';
 
 @Component({
   selector: 'app-view-event',
@@ -23,6 +24,8 @@ export class ViewEventComponent implements OnInit {
   teamData: { activityId: string; teams: Team[] }[] = [];
   backUrl!: string;
   isAdmin: boolean = false;
+  public qrData!: string;
+  public dialogVisible: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +33,8 @@ export class ViewEventComponent implements OnInit {
     private activityService: ActivityService,
     private teamService: TeamService,
     private toastService: ToastService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private bookingService: BookingService
   ) {
     this.backUrl = UrlConstants.home;
 
@@ -73,5 +77,23 @@ export class ViewEventComponent implements OnInit {
 
   leaderboard() {
     this.router.navigate([UrlConstants.leaderboard]);
+  }
+
+  openQR() {
+    if (!this.qrData) {
+      this.loading = true;
+      this.store
+        .select('auth')
+        .pipe(take(1))
+        .subscribe((store) => {
+          this.bookingService.getQrCode(store?.id).subscribe((res: any) => {
+            this.qrData = res.img;
+            this.loading = false;
+            this.dialogVisible = true;
+          });
+        });
+    } else {
+      this.dialogVisible = true;
+    }
   }
 }

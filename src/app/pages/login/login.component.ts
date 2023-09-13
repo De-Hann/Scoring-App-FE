@@ -43,6 +43,10 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  navigateToSignUp() {
+    this.router.navigate([UrlConstants.signup]);
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       this.authService
@@ -61,7 +65,12 @@ export class LoginComponent implements OnInit {
 
             this.store.dispatch(authActions.login({ auth }));
 
-            this.router.navigate([UrlConstants.home]);
+            if (auth.userType === 1 || auth.userType === 2)
+              this.router.navigate([UrlConstants.home]);
+            else if (auth.userType === 3)
+              this.router.navigate([UrlConstants.qrScanner]);
+            else if (auth.userType === 0)
+              this.router.navigate([UrlConstants.qrViewer]);
           },
           error: (err) => {
             if (err.status === 400) {

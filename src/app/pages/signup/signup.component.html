@@ -4,14 +4,14 @@
   </div>
 
   <div class="sub-header">
-    <h1>Let the judgement begin</h1>
+    <h1>Sign Up</h1>
     <p>
       Join us below by rating the Rabbits as they find their way through
       breweing and food.
     </p>
   </div>
 
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="signup-form">
     <div class="input-fields">
       <div class="row">
         <div class="p-inputgroup">
@@ -23,11 +23,27 @@
         <div
           class="error-text"
           *ngIf="
-            loginForm.get('username')?.touched &&
-            !loginForm.get('username')?.valid
+            signUpForm.get('username')?.touched &&
+            !signUpForm.get('username')?.valid
           "
         >
           Username cannot be empty
+        </div>
+      </div>
+      <div class="row">
+        <div class="p-inputgroup">
+          <span class="p-float-label">
+            <input type="email" pInputText formControlName="email" />
+            <label class="float-input" for="float-input">Email</label>
+          </span>
+        </div>
+        <div
+          class="error-text"
+          *ngIf="
+            signUpForm.get('email')?.touched && !signUpForm.get('email')?.valid
+          "
+        >
+          Email cannot be empty
         </div>
       </div>
       <div class="row">
@@ -40,11 +56,28 @@
         <div
           class="error-text"
           *ngIf="
-            loginForm.get('password')?.touched &&
-            !loginForm.get('password')?.valid
+            signUpForm.get('password')?.touched &&
+            !signUpForm.get('password')?.valid
           "
         >
           Password cannot be empty
+        </div>
+      </div>
+      <div class="row">
+        <div class="p-inputgroup">
+          <span class="p-float-label">
+            <input type="number" pInputText formControlName="numberOfPeople" />
+            <label class="float-input" for="float-input">Number of +1s</label>
+          </span>
+        </div>
+        <div
+          class="error-text"
+          *ngIf="
+            signUpForm.get('numberOfPeople')?.touched &&
+            !signUpForm.get('numberOfPeople')?.valid
+          "
+        >
+          Number of +1s cannot be empty
         </div>
       </div>
     </div>
@@ -54,17 +87,16 @@
           pButton
           class="btn btn-primary"
           type="submit"
-          [disabled]="!loginForm.valid"
-          label="Login"
+          [disabled]="!signUpForm.valid"
+          label="Sign up"
         ></button>
       </div>
       <div class="row">
         <button
           pButton
           class="btn btn-primary"
-          label="Sign up"
-          type="button"
-          (click)="navigateToSignUp()"
+          label="Login"
+          (click)="navigateToLogin()"
         ></button>
       </div>
     </div>

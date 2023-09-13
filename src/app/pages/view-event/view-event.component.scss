@@ -21,15 +21,18 @@
         height: 36px;
       }
     }
+
     .controls {
-      margin: 10px 0px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-content: center;
-      justify-content: flex-end;
-      align-items: center;
+      position: fixed;
+      bottom: 0px;
+      left: 0px;
+      img.qr {
+        margin: 10px;
+        width: 36px;
+        height: 36px;
+      }
     }
+
     .activity-container {
       margin: 10px;
       .crest {
@@ -44,6 +47,11 @@
         align-content: center;
         justify-content: center;
         align-items: center;
+
+        .invert {
+          -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+          filter: invert(100%);
+        }
       }
       .activities {
         display: flex;
@@ -65,6 +73,23 @@
           }
           .activity-details {
             margin-left: 20px;
+          }
+        }
+      }
+    }
+    .dialog {
+      .p-dialog-content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+
+        .qr-code {
+          img {
+            width: 100%;
+            aspect-ratio: 1/1;
           }
         }
       }

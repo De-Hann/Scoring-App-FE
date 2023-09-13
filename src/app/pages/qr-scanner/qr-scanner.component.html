@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="nav">
+    <img src="../../../assets/logout.svg" alt="" (click)="logout()" />
+  </div>
+  <div class="instructions">
+    <p>Please scan QR codes to get the get booking information</p>
+  </div>
+  <div class="controls">
+    <img
+      src="../../../assets/qr-code-scan.svg"
+      alt=""
+      class="camera"
+      (click)="toggleWebcam()"
+    />
+  </div>
+  <div class="camera-controls">
+    <webcam
+      class="webcam"
+      [trigger]="triggerObservable"
+      (imageCapture)="handleImage($event)"
+      *ngIf="showWebcam"
+      [allowCameraSwitch]="allowCameraSwitch"
+      [switchCamera]="nextWebcamObservable"
+      [videoOptions]="videoOptions"
+      [imageQuality]="1"
+      (cameraSwitched)="cameraWasSwitched($event)"
+      (initError)="handleInitError($event)"
+    ></webcam>
+
+    <div id="reader" style="display: none"></div>
+  </div>
+  <div class="dialog">
+    <p-dialog
+      header="Booking information"
+      *ngIf="dialogContent"
+      [(visible)]="dialogVisible"
+      [style]="{ width: '90vw', height: '90vh' }"
+      [modal]="true"
+      [draggable]="false"
+      [resizable]="false"
+    >
+      <div>
+        <p>Username: {{ dialogContent.user.username }}</p>
+        <p>Email: {{ dialogContent.email }}</p>
+        <p>Role: {{ roleMap[dialogContent.user.userType] }}</p>
+        <span class="glasses">
+          <img src="../../../assets/beer-foam-drink.svg" alt="" />
+          <p>x {{ dialogContent.noOfPeople + 1 }}</p>
+        </span>
+      </div>
+    </p-dialog>
+  </div>
+</div>
