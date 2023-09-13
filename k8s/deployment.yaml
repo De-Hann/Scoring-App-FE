@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beerfest-fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: beerfest-fe
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: beerfest-fe
+        version: v1
+    spec:
+      containers:
+        - name: beerfest-fe
+          image: 127.0.0.1:5000/beerfest-fe
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 80

@@ -32,20 +32,11 @@ export class SignupComponent implements OnInit {
     private store: Store<AppState>,
     private router: Router,
     private toastService: ToastService
-  ) {}
-
-  ngOnInit(): void {
-    this.store
-      .select(selectUserState)
-      .pipe(take(1))
-      .subscribe({
-        next: (store) => {
-          if (store !== null) {
-            this.router.navigate([UrlConstants.home]);
-          }
-        },
-      });
+  ) {
+    this.store.dispatch(authActions.logout());
   }
+
+  ngOnInit(): void {}
 
   navigateToLogin() {
     this.router.navigate([UrlConstants.login]);

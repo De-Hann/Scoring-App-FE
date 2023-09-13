@@ -20,6 +20,8 @@ export class QrScannerComponent implements OnInit, AfterViewInit {
   dialogVisible: boolean = false;
   dialogContent!: any;
 
+  roleMap = ['General', 'Admin', 'Judge', 'Scanner'];
+
   constructor(private router: Router, private bookingService: BookingService) {}
 
   ngOnInit(): void {

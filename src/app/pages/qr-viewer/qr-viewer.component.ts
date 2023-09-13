@@ -31,7 +31,6 @@ export class QrViewerComponent implements OnInit {
         this.userId = store?.id;
 
         this.bookingService.getQrCode(this.userId).subscribe((res: any) => {
-          console.log(res);
           this.qrData = res.img;
           this.loading = false;
         });

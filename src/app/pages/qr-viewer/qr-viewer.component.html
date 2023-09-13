@@ -3,7 +3,7 @@
     <img src="../../../assets/logout.svg" alt="" (click)="logout()" />
   </div>
   <div class="qr-code">
-    <img [src]="qrData" alt="" />
+    <img [src]="'data:image/jpg;base64,' + qrData" alt="" />
   </div>
 </div>
 <div class="loader" *ngIf="loading">

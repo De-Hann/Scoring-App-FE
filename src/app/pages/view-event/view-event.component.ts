@@ -24,6 +24,8 @@ export class ViewEventComponent implements OnInit {
   teamData: { activityId: string; teams: Team[] }[] = [];
   backUrl!: string;
   isAdmin: boolean = false;
+  public qrData!: string;
+  public dialogVisible: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -75,5 +77,23 @@ export class ViewEventComponent implements OnInit {
 
   leaderboard() {
     this.router.navigate([UrlConstants.leaderboard]);
+  }
+
+  openQR() {
+    if (!this.qrData) {
+      this.loading = true;
+      this.store
+        .select('auth')
+        .pipe(take(1))
+        .subscribe((store) => {
+          this.bookingService.getQrCode(store?.id).subscribe((res: any) => {
+            this.qrData = res.img;
+            this.loading = false;
+            this.dialogVisible = true;
+          });
+        });
+    } else {
+      this.dialogVisible = true;
+    }
   }
 }

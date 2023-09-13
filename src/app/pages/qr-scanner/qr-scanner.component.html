@@ -2,9 +2,12 @@
   <div class="nav">
     <img src="../../../assets/logout.svg" alt="" (click)="logout()" />
   </div>
+  <div class="instructions">
+    <p>Please scan QR codes to get the get booking information</p>
+  </div>
   <div class="controls">
     <img
-      src="../../../assets/camera.svg"
+      src="../../../assets/qr-code-scan.svg"
       alt=""
       class="camera"
       (click)="toggleWebcam()"
@@ -37,13 +40,13 @@
       [resizable]="false"
     >
       <div>
-        <p>BookingId: {{ dialogContent.id }}</p>
-        <p>UserId: {{ dialogContent.user.id }}</p>
         <p>Username: {{ dialogContent.user.username }}</p>
-        <p>
-          Role: {{ dialogContent.user.userType === 0 ? "General" : "Admin" }}
-        </p>
-        <p>No of peeps: {{ dialogContent.noOfPeople }}</p>
+        <p>Email: {{ dialogContent.email }}</p>
+        <p>Role: {{ roleMap[dialogContent.user.userType] }}</p>
+        <span class="glasses">
+          <img src="../../../assets/beer-foam-drink.svg" alt="" />
+          <p>x {{ dialogContent.noOfPeople + 1 }}</p>
+        </span>
       </div>
     </p-dialog>
   </div>

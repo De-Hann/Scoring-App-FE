@@ -21,6 +21,12 @@
         height: 36px;
       }
     }
+    .instructions{
+      p{
+        font-weight: 1000;
+        font-size: 1.5rem;
+      }
+    }
     .controls {
       position: fixed;
       bottom: 0px;
@@ -44,6 +50,31 @@
             width: calc(90vw);
             height: fit-content;
           }
+        }
+      }
+    }
+    .dialog{
+      p{
+        font-weight: 1000;
+        font-size: 1.0rem;
+      }
+      .glasses{
+
+
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        img{
+          width: 50%;
+        }
+        p{
+          width: 50%;
+          font-weight: 700;
+          font-size: 2.0rem;
         }
       }
     }

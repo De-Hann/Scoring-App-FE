@@ -5,6 +5,15 @@
     <img src="../../../assets/leaderboard.svg" alt="" (click)="leaderboard()" />
   </div>
 
+  <div class="controls">
+    <img
+      src="../../../assets/qr-code.svg"
+      alt=""
+      class="qr"
+      (click)="openQR()"
+    />
+  </div>
+
   <div class="activity-container">
     <div class="crest">
       <img src="../../../assets/Crest.svg" class="invert" alt="" />
@@ -33,11 +42,26 @@
         </div>
       </div>
     </div>
-    <div class="loader" *ngIf="loading">
-      <app-spinner></app-spinner>
-    </div>
     <div *ngIf="this.activities.length <= 0">
       <p>No Activities found</p>
     </div>
   </div>
+  <div class="dialog">
+    <p-dialog
+      header="Booking information"
+      *ngIf="qrData"
+      [(visible)]="dialogVisible"
+      [style]="{ width: '90vw', height: '90vh' }"
+      [modal]="true"
+      [draggable]="false"
+      [resizable]="false"
+    >
+      <div class="qr-code">
+        <img [src]="'data:image/jpg;base64,' + qrData" alt="" />
+      </div>
+    </p-dialog>
+  </div>
+</div>
+<div class="loader" *ngIf="loading">
+  <app-spinner></app-spinner>
 </div>
