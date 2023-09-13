@@ -1,5 +1,5 @@
 name: Deployment
-
+run-name: ${{ github.actor }} is deploying 🚀
 on: push
 
 jobs:
